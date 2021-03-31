@@ -109,9 +109,18 @@ public class Start extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		primStage = primaryStage;
-		primaryStage.setTitle("Main Page");
-				
-		VBox topContainer = new VBox();
+		primaryStage.setTitle("Library Management System");
+		
+		parent = loadFXML("login");
+//    	parent = loadFXML("studentDashboard");
+    	//clean error authentication
+//    	parent.getChildrenUnmodifiable().get(6).setVisible(false);
+    	
+    	scene = new Scene(parent, 640, 480);
+    	primaryStage.setScene(scene);
+    	primaryStage.show();
+		
+	/*	VBox topContainer = new VBox();
 		topContainer.setId("top-container");
 		MenuBar mainMenu = new MenuBar();
 		VBox imageHolder = new VBox();
@@ -196,7 +205,7 @@ public class Start extends Application {
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
 		primaryStage.show();
-		
+		*/
 
 		
 		
