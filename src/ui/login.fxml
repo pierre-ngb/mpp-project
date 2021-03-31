@@ -13,12 +13,12 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="userFld" alignment="CENTER" layoutX="110.0" layoutY="130.0" prefHeight="38.0" prefWidth="179.0" promptText="User name" style="-fx-background-radius: 20;">
+      <TextField id="userNameFld" fx:id="userNameFld" alignment="CENTER" layoutX="110.0" layoutY="130.0" prefHeight="38.0" prefWidth="179.0" promptText="User name" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="passwordFld" alignment="CENTER" layoutX="112.0" layoutY="200.0" prefHeight="38.0" prefWidth="179.0" promptText="Password" style="-fx-background-radius: 20;">
+      <TextField id="passwordFld" fx:id="passwordFld" alignment="CENTER" layoutX="112.0" layoutY="200.0" prefHeight="38.0" prefWidth="179.0" promptText="Password" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
          </font>
