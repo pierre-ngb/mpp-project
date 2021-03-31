@@ -18,7 +18,7 @@ import dataaccess.DataAccessFacade.StorageType;
 public class DataAccessFacade implements DataAccess {
 	
 	enum StorageType {
-		BOOKS, MEMBERS, USERS;
+		BOOKS, MEMBERS, USERS, CHECKOUTS;
 	}
 	
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
