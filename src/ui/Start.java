@@ -1,14 +1,18 @@
 package ui;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
 import business.ControllerInterface;
 import business.SystemController;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -25,6 +29,12 @@ import javafx.stage.Stage;
 
 
 public class Start extends Application {
+	
+	 private static Scene scene;
+	    private static Stage primaryStage;
+	    private Parent parent;
+	    
+	    
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -51,8 +61,53 @@ public class Start extends Application {
 		}
 	}
 	
+	
+	
+    private static Parent loadFXML(String fxml) throws IOException {
+    	
+    	FXMLLoader fxmlLoader = new FXMLLoader();
+    	fxmlLoader.setLocation(Start.class.getResource(fxml + ".fxml"));
+//    	"ui/"+
+    	return fxmlLoader.load();
+    }
+	
+	
+   
+    
+//    @Override
+//    public void start(Stage stage) throws IOException {
+//    	parent = loadFXML("login");
+////    	parent = loadFXML("studentDashboard");
+//    	//clean error authentication
+//    	parent.getChildrenUnmodifiable().get(6).setVisible(false);
+//    	
+//    	scene = new Scene(parent, 640, 480);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		primStage = primaryStage;
 		primaryStage.setTitle("Main Page");
 				
@@ -83,6 +138,7 @@ public class Start extends Application {
 		login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+            	
             	hideAllWindows();
     			if(!LoginWindow.INSTANCE.isInitialized()) {
     				LoginWindow.INSTANCE.init();
@@ -140,6 +196,24 @@ public class Start extends Application {
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
 		primaryStage.show();
+		
+
+		
+		
+		
 	}
 	
 }
+
+//parent = loadFXML("Books");
+////
+////parent.getChildrenUnmodifiable().get(6).setVisible(false);
+//
+//scene = new Scene(topContainer, 420, 375);
+//primaryStage.setScene(scene);
+//primaryStage.show();
+
+//next
+//scene = new Scene(parent, 420, 375);
+//primaryStage.setScene(scene);
+//primaryStage.show();

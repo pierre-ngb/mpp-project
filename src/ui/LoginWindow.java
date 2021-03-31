@@ -1,8 +1,8 @@
 package ui;
 
-import business.ControllerInterface;
-import business.LoginException;
-import business.SystemController;
+
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,11 +14,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import ui.Start;
 
 public class LoginWindow extends Stage implements LibWindow {
 	public static final LoginWindow INSTANCE = new LoginWindow();
@@ -51,7 +51,7 @@ public class LoginWindow extends Stage implements LibWindow {
         scenetitle.setFont(Font.font("Harlow Solid Italic", FontWeight.NORMAL, 20)); //Tahoma
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        Label userName = new Label("User Name:");
+        Label userName = new Label("User Name111:");
         grid.add(userName, 0, 1);
 
         TextField userTextField = new TextField();
@@ -80,15 +80,25 @@ public class LoginWindow extends Stage implements LibWindow {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent e) {
-        		try {
-        			ControllerInterface c = new SystemController();
-        			c.login(userTextField.getText().trim(), pwBox.getText().trim());
-        			messageBar.setFill(Start.Colors.green);
-             	    messageBar.setText("Login successful");
-        		} catch(LoginException ex) {
-        			messageBar.setFill(Start.Colors.red);
-        			messageBar.setText("Error! " + ex.getMessage());
-        		}
+        		System.out.println("pressed");
+        		
+    			try {
+					Start.setRoot("Books");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        		
+//        		try {
+//        			ControllerInterface c = new SystemController();
+//        			c.login(userTextField.getText().trim(), pwBox.getText().trim());
+//        			messageBar.setFill(Start.Colors.green);
+//             	    messageBar.setText("Login successful");
+//             	    
+//        		} catch(LoginException ex) {
+//        			messageBar.setFill(Start.Colors.red);
+//        			messageBar.setText("Error! " + ex.getMessage());
+//        		}
         	   
         	}
         });
