@@ -9,9 +9,19 @@ import dataaccess.DataAccessFacade;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(allWhoseZipContains3());
-		System.out.println(allHavingAtLeastTwoCopies());
-		System.out.println(allHavingMultipleAuthors());
+//		System.out.println(allWhoseZipContains3());
+//		System.out.println(allHavingAtLeastTwoCopies());
+//		System.out.println(allHavingMultipleAuthors());
+		ControllerInterface ci = new SystemController();
+		ci.allBooks().forEach( x -> {
+			System.out.println(x.getTitle().toString() + ", "+x);
+			for(BookCopy c: x.getCopies()) {
+				System.out.println(c.getCopyNum());
+				c.changeAvailability();
+			}
+			
+			System.out.println(x.getTitle().toString() + ", "+x);
+		});
 
 	}
 	//Returns a list of all ids of LibraryMembers whose zipcode contains the digit 3
