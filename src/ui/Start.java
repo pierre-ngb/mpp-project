@@ -102,15 +102,3 @@ public class Start extends Application {
     }
 }
 
-//parent = loadFXML("Books");
-////
-////parent.getChildrenUnmodifiable().get(6).setVisible(false);
-//
-//scene = new Scene(topContainer, 420, 375);
-//primaryStage.setScene(scene);
-//primaryStage.show();
-
-//next
-//scene = new Scene(parent, 420, 375);
-//primaryStage.setScene(scene);
-//primaryStage.show();
