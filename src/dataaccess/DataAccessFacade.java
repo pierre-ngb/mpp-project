@@ -11,6 +11,7 @@ import java.util.List;
 
 import business.Book;
 import business.BookCopy;
+import business.CheckoutRecord;
 import business.LibraryMember;
 import dataaccess.DataAccessFacade.StorageType;
 
@@ -31,6 +32,30 @@ public class DataAccessFacade implements DataAccess {
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);	
+	}
+	
+	// save book to database
+	public void saveBook(Book bk) {
+		HashMap<String, Book> books = readBooksMap();
+		String isbn = bk.getIsbn();
+		books.put(isbn, bk);
+		saveToStorage(StorageType.BOOKS, books);
+	}
+	
+	// save checkout record
+	public void saveCheckoutRecord(CheckoutRecord ck) {
+		HashMap<String, CheckoutRecord> records = readCheckoutRecordMap();
+		String memberId = ck.getMember().getMemberId();
+		records.put(memberId, ck);
+		saveToStorage(StorageType.CHECKOUTS, records);
+	}
+	
+	// save user
+	public void saveUser(User usr) {
+		HashMap<String, User> users = readUserMap();
+		String userId = usr.getId();
+		users.put(userId, usr);
+		saveToStorage(StorageType.USERS, users);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -56,7 +81,11 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, User>)readFromStorage(StorageType.USERS);
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public HashMap<String,CheckoutRecord> readCheckoutRecordMap(){
+		
+		return (HashMap<String,CheckoutRecord>) readFromStorage(StorageType.CHECKOUTS);
+	}
 	/////load methods - these place test data into the storage area
 	///// - used just once at startup  
 	
