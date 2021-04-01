@@ -6,25 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginViewController">
    <children>
       <Label alignment="CENTER" layoutX="168.0" layoutY="55.0" style="-fx-font-weight: 700;" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="110.0" layoutY="130.0" prefHeight="38.0" prefWidth="179.0" promptText="User name" style="-fx-background-radius: 20;">
+      <TextField id="userNameFld" fx:id="userNameFld" alignment="CENTER" layoutX="110.0" layoutY="130.0" prefHeight="38.0" prefWidth="179.0" promptText="User name" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="112.0" layoutY="200.0" prefHeight="38.0" prefWidth="179.0" promptText="Password" style="-fx-background-radius: 20;">
+      <TextField id="passwordFld" fx:id="passwordFld" alignment="CENTER" layoutX="112.0" layoutY="200.0" prefHeight="38.0" prefWidth="179.0" promptText="Password" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button alignment="CENTER" layoutX="155.0" layoutY="282.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" style="-fx-background-radius: 20; -fx-background-color: #000080;" text="Login" textFill="WHITE">
+      <Button fx:id="loginBtn" alignment="CENTER" layoutX="155.0" layoutY="282.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="31.0" prefWidth="94.0" style="-fx-background-radius: 20; -fx-background-color: #000080;" text="Login" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
