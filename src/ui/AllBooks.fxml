@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;">
+         <children>
+            <Label layoutX="246.0" layoutY="20.0" style="-fx-font-weight: 700;" text="List of Books" textFill="NAVY" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="183.0" layoutY="73.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ISBN" />
+          <TableColumn prefWidth="75.0" text="Title" />
+            <TableColumn prefWidth="75.0" text="Checkout Duration" />
+            <TableColumn prefWidth="75.0" text="Avalability" />
+            <TableColumn prefWidth="75.0" text="No of Copies" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
