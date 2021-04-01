@@ -112,8 +112,7 @@ public class AddNewBookController {
     	
     	authors = new ArrayList<Author>();
     	comboBox.getSelectionModel().selectedItemProperty().addListener((observable,oldValu,newValue)->{
-    		System.out.println(newValue.getFirstName() + " " + newValue.getLastName());
-//    		 authorFld.getText() + "" +
+    		
     		String authorsName = newValue.getFirstName() + " " + newValue.getLastName();
     		authorFld.setText(authorsName);
     		authors.add(newValue);
