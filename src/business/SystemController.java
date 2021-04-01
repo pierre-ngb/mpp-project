@@ -59,6 +59,14 @@ public class SystemController implements ControllerInterface {
 		retval.addAll(da.readMemberMap().values());
 		return retval;
 	}
+	@Override
+	public void saveBook(Book book) {
+		DataAccess da = new DataAccessFacade();
+		da.saveBook(book);
+		
+	}
+	
+
 	
 	
 }

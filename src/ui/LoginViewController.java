@@ -47,7 +47,7 @@ public class LoginViewController {
 		alertMessage();
 		return;
 	}
-	
+
 	try {
 		ControllerInterface c = new SystemController();
 
@@ -60,14 +60,15 @@ public class LoginViewController {
 	}else {
 		
 	}
-
-	    
+ 
 } catch(LoginException ex) {
-
-	
+	validateMessage = ex.getMessage();
+	alertMessage();
+	System.out.println(ex.getMessage());
+	return;
 }
 	
-	
+
 			try {
 				Start.setRoot("LibrarianView");
 			} catch (IOException e) {

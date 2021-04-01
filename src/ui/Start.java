@@ -74,6 +74,10 @@ public class Start extends Application {
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+    
+    public static Stage getPrimaryStage() {
+    	return primaryStage;
+    }
 
     @Override
 

@@ -109,11 +109,25 @@ final public class Book implements Serializable {
 		}
 		return null;
 	}
+	
 	public int getMaxCheckoutLength() {
 		return maxCheckoutLength;
 	}
 
 	
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setMaxCheckoutLength(int maxCheckoutLength) {
+		this.maxCheckoutLength = maxCheckoutLength;
+	}
+
+
 	
 	
 	
