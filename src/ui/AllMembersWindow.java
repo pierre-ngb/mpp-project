@@ -26,12 +26,14 @@ public class AllMembersWindow extends Stage implements LibWindow {
 	}
 	private TextArea ta;
 	
+	
 	public void setData(String data) {
 		ta.setText(data);
 	}
 	
 	
 	/* This class is a singleton */
+	
 	private AllMembersWindow() {}
 	
 	public void init() {
