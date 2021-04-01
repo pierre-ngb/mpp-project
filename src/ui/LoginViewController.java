@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class LoginViewController {
 
-	@FXML private Button loginBtn;
+	 private Button loginBtn;
 	 @FXML private TextField userNameFld;
 	 @FXML private TextField passwordFld;
 
@@ -24,7 +24,6 @@ public class LoginViewController {
 	    String validateMessage = "" ;
 	    public void validatingFields() {
 	    	validateMessage = "";
-
 	    	
 	    	if (userNameFld.getText().length() < 1) {
 	    		validateMessage = "Enter Username\n";
@@ -33,7 +32,9 @@ public class LoginViewController {
 	    		validateMessage = validateMessage +"Enter Password\n";
 	    		 
 	    	}
+	    	
 	    }
+	 
 	 
 	 public void loginButtonAction(ActionEvent event) {
 
@@ -47,27 +48,24 @@ public class LoginViewController {
 		return;
 	}
 	
+	try {
+		ControllerInterface c = new SystemController();
 
-		try {
-			ControllerInterface c = new SystemController();
+		c.login(userNameFld.getText().trim(), passwordFld.getText().trim());
 
-			c.login(userNameFld.getText().trim(), passwordFld.getText().trim());
-			if (SystemController.currentAuth == Auth.LIBRARIAN){
-				
-			}else if (SystemController.currentAuth == Auth.LIBRARIAN) {
-				
-			}else {
-				
-			}
-		} catch (LoginException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-    		validateMessage =  "Username or password incorrect\n";
-    		alertMessage();
-    		return;
-		}
+	if (SystemController.currentAuth == Auth.LIBRARIAN){
+		
+	}else if (SystemController.currentAuth == Auth.LIBRARIAN) {
+		
+	}else {
+		
+	}
 
+	    
+} catch(LoginException ex) {
 
+	
+}
 	
 	
 			try {
@@ -81,7 +79,7 @@ public class LoginViewController {
 	}
 	 
 	    public void alertMessage() {
-        	  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	  	Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setTitle("Alert");
         	    alert.setHeaderText("Data Missing");
         	    alert.setContentText(validateMessage);

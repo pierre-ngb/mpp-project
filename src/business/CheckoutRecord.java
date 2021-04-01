@@ -7,7 +7,6 @@ public class CheckoutRecord {
 
 	private LibraryMember member;
 	private HashMap<LocalDate, CheckoutRecordEntry> records;
-//	private List<CheckoutRecordEntry> records;
 	
 	public CheckoutRecord(LibraryMember member) {
 		this.member = member;
