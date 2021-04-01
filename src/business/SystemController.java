@@ -65,6 +65,13 @@ public class SystemController implements ControllerInterface {
 		da.saveBook(book);
 		
 	}
+	@Override
+	public void deleteBook(Book book) {
+		// TODO Auto-generated method stub
+		DataAccess da = new DataAccessFacade();
+		da.deleteBook(book);
+		
+	}
 	
 
 	

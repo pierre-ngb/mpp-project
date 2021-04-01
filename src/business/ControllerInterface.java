@@ -13,5 +13,7 @@ public interface ControllerInterface {
 	public List<Book> allBooks();
 	public List<LibraryMember> allMembers();
 	public void saveBook(Book book);
+	public void deleteBook(Book book);
+
 	
 }

@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -81,6 +82,7 @@ public class LibrarianViewController {
     		checkLbl1.setText("");
     		isbnlbl.setText("");
     		titlelbl.setText("");
+    		copyLbl.setText("");
 
 
 
@@ -103,8 +105,23 @@ public class LibrarianViewController {
 
     }
 
+    String validateMessage = "";
     @FXML
     void deletebtnAction(ActionEvent event) {
+    	
+    	   Book book = tableView.getSelectionModel().getSelectedItem();
+    	      if(book != null) {
+    	    	  
+//    	    	    	displayBookInfo(book);
+    	    	    	new SystemController().deleteBook(book);
+    	    	    	initViewBook();
+    	    	    	
+
+//    	    	  }else {
+//    	    		  validateMessage = "No Book Selected";
+//    	    		  alertMessage();
+//    	    	  }
+    	      }
 
     }
 
@@ -163,4 +180,13 @@ public class LibrarianViewController {
     void newBtnAction(ActionEvent event) {
 
     }
+    
+    public void alertMessage() {
+	  	Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setTitle("Alert");
+	    alert.setHeaderText("Data Missing");
+	    alert.setContentText(validateMessage);
+	    alert.showAndWait();
+
+}
     }
