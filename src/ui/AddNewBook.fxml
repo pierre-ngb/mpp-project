@@ -10,11 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddNewBookController">
-=======
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> branch 'Sprint1' of https://github.com/pierre-ngb/mpp-project.git
    <children>
       <AnchorPane prefHeight="57.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;">
          <children>
