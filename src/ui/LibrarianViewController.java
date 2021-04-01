@@ -44,31 +44,7 @@ public class LibrarianViewController {
     @FXML
     private Button checkBtn;
 
-    @Override
-    protected void finalize() throws Throwable {
-    	// TODO Auto-generated method stub
-    	super.finalize();
-    	
-    	
-//    	TableColumn<Book, String> column1 = new TableColumn<>("First Name");
-//        column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//
-//
-//        TableColumn<Book, String> column2 = new TableColumn<>("Last Name");
-//        column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-//
-//
-//        tableView.getColumns().add(column1);
-//        tableView.getColumns().add(column2);
-//
-//        tableView.getItems().add(new Book("John", "Doe"));
-//        tableView.getItems().add(new Book("Jane", "Deer"));
-//
-//        VBox vbox = new VBox(tableView);
-//		ControllerInterface c = new SystemController();
-//        System.out.println(c.allBooks()
-//);
-    }
+
     
     @FXML
     void checkbtnAction(ActionEvent event) {
