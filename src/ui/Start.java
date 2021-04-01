@@ -74,8 +74,8 @@ public class Start extends Application {
 	
    
     
-//    @Override
-//    public void start(Stage stage) throws IOException {
+////    @Override
+//    public void start1(Stage stage) throws IOException {
 //    	parent = loadFXML("login");
 ////    	parent = loadFXML("studentDashboard");
 //    	//clean error authentication

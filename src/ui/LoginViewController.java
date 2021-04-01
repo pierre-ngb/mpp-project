@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class LoginViewController {
 
-	 private Button loginBtn;
+	@FXML private Button loginBtn;
 	 @FXML private TextField userNameFld;
 	 @FXML private TextField passwordFld;
 
@@ -33,9 +33,7 @@ public class LoginViewController {
 	    		validateMessage = validateMessage +"Enter Password\n";
 	    		 
 	    	}
-	    	
 	    }
-	 
 	 
 	 public void loginButtonAction(ActionEvent event) {
 
@@ -49,23 +47,27 @@ public class LoginViewController {
 		return;
 	}
 	
-	try {
-		ControllerInterface c = new SystemController();
 
-		c.login(userNameFld.getText().trim(), passwordFld.getText().trim());
+		try {
+			ControllerInterface c = new SystemController();
 
-	if (SystemController.currentAuth == Auth.LIBRARIAN){
-		
-	}else if (SystemController.currentAuth == Auth.LIBRARIAN) {
-		
-	}else {
-		
-	}
+			c.login(userNameFld.getText().trim(), passwordFld.getText().trim());
+			if (SystemController.currentAuth == Auth.LIBRARIAN){
+				
+			}else if (SystemController.currentAuth == Auth.LIBRARIAN) {
+				
+			}else {
+				
+			}
+		} catch (LoginException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+    		validateMessage =  "Username or password incorrect\n";
+    		alertMessage();
+    		return;
+		}
 
-	    
-} catch(LoginException ex) {
-	alertMessage();
-}
+
 	
 	
 			try {
