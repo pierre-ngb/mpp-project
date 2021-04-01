@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class LoginViewController {
 
-	 private Button loginBtn;
+	 @FXML private Button loginBtn;
 	 @FXML private TextField userNameFld;
 	 @FXML private TextField passwordFld;
 
@@ -52,6 +52,7 @@ public class LoginViewController {
 		ControllerInterface c = new SystemController();
 
 		c.login(userNameFld.getText().trim(), passwordFld.getText().trim());
+
 
 	if (SystemController.currentAuth == Auth.LIBRARIAN){
 		
