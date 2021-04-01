@@ -10,14 +10,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="150.0" layoutY="26.0" style="-fx-font-weight: 700;" text="Add New Book" AnchorPane.topAnchor="25.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="57.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;">
+         <children>
+            <Label layoutX="150.0" layoutY="29.0" style="-fx-font-weight: 700;" text="Add New Book" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <GridPane layoutX="90.0" layoutY="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.3333740234375" minWidth="10.0" prefWidth="146.0" />
