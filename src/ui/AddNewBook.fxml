@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddNewBookController">
    <children>
       <Label layoutX="150.0" layoutY="26.0" style="-fx-font-weight: 700;" text="Add New Book" AnchorPane.topAnchor="25.0">
          <font>
@@ -35,22 +34,22 @@
             <Label text="ISBN" />
             <Label text="Title" GridPane.rowIndex="1" />
             <Label text="Checkout Duration" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="isbnFld" GridPane.columnIndex="1" />
+            <TextField fx:id="titleFld" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="checkOutDurationFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Number of Copies" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="noCopyFld" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Author" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <ComboBox layoutY="2.0" prefHeight="25.0" prefWidth="179.0" />
-                  <Button layoutX="190.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-radius: 25; -fx-background-color: #000080; -fx-font-weight: 700;" text="+" textFill="WHITE" />
+                  <ComboBox fx:id="comboBox" layoutY="2.0" onAction="#comboBtnAction" prefHeight="25.0" prefWidth="179.0" promptText="Select Author" />
+                  <Button fx:id="authorBtn" layoutX="190.0" layoutY="2.0" mnemonicParsing="false" onAction="#addAuthorBtnAction" style="-fx-background-radius: 25; -fx-background-color: #000080; -fx-font-weight: 700;" text="+" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="authorFld" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button layoutX="160.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="10.0" />
+      <Button layoutX="160.0" layoutY="224.0" mnemonicParsing="false" onAction="#addBookAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="10.0" />
       <Label layoutX="358.0" layoutY="16.0" style="-fx-font-weight: 700;" text="X" textFill="#d30e0e" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="14.0" />

@@ -102,6 +102,25 @@ public class LibrarianViewController {
     
     @FXML
     void checkbtnAction(ActionEvent event) {
+    	
+    	
+        Book book = tableView.getSelectionModel().getSelectedItem();
+        if(book != null) {
+      	  boolean ok = editBook(book);
+      	  
+      	  if(ok) {
+//      	    	displayBookInfo(book);
+      	    	new SystemController().saveBook(book);
+      	    	initViewBook();
+      	    	tableView.getSelectionModel().select(book);
+      	    	displayBookInfo(book);
+
+      	  }
+        }else {
+      	  validateMessage = "No Book Selected";
+  		  alertMessage();
+        }
+    	
 
     }
 
@@ -139,7 +158,11 @@ public class LibrarianViewController {
     	    	displayBookInfo(book);
 
     	  }
+      }else {
+    	  validateMessage = "No Book Selected";
+		  alertMessage();
       }
+
     
 
     }
@@ -177,7 +200,41 @@ public class LibrarianViewController {
     
     @FXML
     void newBtnAction(ActionEvent event) {
-
+    	
+    	addNewbook();
+    	initialize();
+    	
+    }
+    
+    public void addNewbook() {
+    	
+    	try {
+        	  FXMLLoader loader = new FXMLLoader();
+        	  loader.setLocation(Start.class.getResource("AddNewBook" + ".fxml"));
+    		AnchorPane page = (AnchorPane)loader.load();
+    		Stage stage = new Stage();
+    		stage.setTitle("Add new book");
+    		stage.initModality(Modality.WINDOW_MODAL);
+    		
+    		stage.initOwner(Start.getPrimaryStage());
+    		Scene newScene = new Scene(page);
+    		stage.setScene(newScene);
+    		
+    		AddNewBookController con = loader.getController();
+    		  con.setDialogStage(stage);
+    		
+    		stage.showAndWait();
+    		
+    		
+//    		return con.isOkClicked();
+    		
+    		
+    	} catch (IOException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+//    		return false;
+    	}
+    	
     }
     
     public void alertMessage() {
