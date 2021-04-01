@@ -95,9 +95,8 @@ public class AddNewBookController {
     public void initialize() {
     	
     	
-		List<Author> allAuthors = new ArrayList<>();
     	new SystemController().allBooks().forEach(b->{
-//    		comboBox.getItems().addAll(b.getAuthors());
+    		
     		final ObservableList<Author> authors = FXCollections.observableList(b.getAuthors());
     		comboBox.itemsProperty().setValue(authors);
     	});

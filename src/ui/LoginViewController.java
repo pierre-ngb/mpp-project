@@ -70,8 +70,14 @@ public class LoginViewController {
 }
 	
 
+//	try {
+//		Start.setRoot("LibrarianView");
+//	} catch (IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
 			try {
-				Start.setRoot("LibrarianView");
+				Start.setRoot("Menu");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
