@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import utils.Utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -77,6 +78,9 @@ public class AddNewBookController {
     		
     		Book book1 = new Book(isbnFld.getText().trim(), titleFld.getText().trim(), 
     				Integer.valueOf(checkOutDurationFld.getText()), authors);
+    		for(int i = 0; i < Integer.valueOf(noCopyFld.getText()); i++) {
+    			book1.addCopy();
+    		}
     		new SystemController().saveBook(book1);
     		this.dialogStage.close();
     		
@@ -99,6 +103,8 @@ public class AddNewBookController {
     	});
     	convertComboDisplay();
     	selectAuthor();
+    	Utils.numberOnly(noCopyFld);
+    	Utils.numberOnly(checkOutDurationFld);
     	    	
     }
     
