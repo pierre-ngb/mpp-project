@@ -24,7 +24,6 @@ public class LoginViewController {
 	    String validateMessage = "" ;
 	    public void validatingFields() {
 	    	validateMessage = "";
-
 	    	
 	    	if (userNameFld.getText().length() < 1) {
 	    		validateMessage = "Enter Username\n";
@@ -64,7 +63,8 @@ public class LoginViewController {
 
 	    
 } catch(LoginException ex) {
-	alertMessage();
+
+	
 }
 	
 	
@@ -79,7 +79,7 @@ public class LoginViewController {
 	}
 	 
 	    public void alertMessage() {
-        	  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	  	Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setTitle("Alert");
         	    alert.setHeaderText("Data Missing");
         	    alert.setContentText(validateMessage);

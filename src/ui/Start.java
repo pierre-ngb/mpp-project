@@ -70,148 +70,32 @@ public class Start extends Application {
 //    	"ui/"+
     	return fxmlLoader.load();
     }
-	
-	
-   
-    
-//    @Override
-//    public void start(Stage stage) throws IOException {
-//    	parent = loadFXML("login");
-////    	parent = loadFXML("studentDashboard");
-//    	//clean error authentication
-//    	parent.getChildrenUnmodifiable().get(6).setVisible(false);
-//    	
-//    	scene = new Scene(parent, 640, 480);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public void start(Stage primaryStage) throws IOException {
-		primStage = primaryStage;
-		primaryStage.setTitle("Library Management System");
-		
-		parent = loadFXML("login");
-//    	parent = loadFXML("studentDashboard");
-    	//clean error authentication
-//    	parent.getChildrenUnmodifiable().get(6).setVisible(false);
-    	
-    	scene = new Scene(parent, 640, 480);
-    	primaryStage.setScene(scene);
-    	primaryStage.show();
-		
-	/*	VBox topContainer = new VBox();
-		topContainer.setId("top-container");
-		MenuBar mainMenu = new MenuBar();
-		VBox imageHolder = new VBox();
-		Image image = new Image("ui/library.jpg", 400, 300, false, false);
+    @Override
 
-        // simply displays in ImageView the image as is
-        ImageView iv = new ImageView();
-        iv.setImage(image);
-        imageHolder.getChildren().add(iv);
-        imageHolder.setAlignment(Pos.CENTER);
-        HBox splashBox = new HBox();
-        Label splashLabel = new Label("The Library System");
-        splashLabel.setFont(Font.font("Trajan Pro", FontWeight.BOLD, 30));
-        splashBox.getChildren().add(splashLabel);
-        splashBox.setAlignment(Pos.CENTER);
-		
-		topContainer.getChildren().add(mainMenu);
-		topContainer.getChildren().add(splashBox);
-		topContainer.getChildren().add(imageHolder);
-		
-		Menu optionsMenu = new Menu("Options");
-		MenuItem login = new MenuItem("Login");
-		
-		login.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-            	
-            	hideAllWindows();
-    			if(!LoginWindow.INSTANCE.isInitialized()) {
-    				LoginWindow.INSTANCE.init();
-    			}
-    			LoginWindow.INSTANCE.clear();
-    			LoginWindow.INSTANCE.show();
-            }
-        });			
-							
-		MenuItem bookIds = new MenuItem("All Book Ids");
-		bookIds.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-				hideAllWindows();
-				if(!AllBooksWindow.INSTANCE.isInitialized()) {
-					AllBooksWindow.INSTANCE.init();
-				}
-				ControllerInterface ci = new SystemController();
-				List<String> ids = ci.allBookIds();
-				Collections.sort(ids);
-				StringBuilder sb = new StringBuilder();
-				for(String s: ids) {
-					sb.append(s + "\n");
-				}
-				AllBooksWindow.INSTANCE.setData(sb.toString());
-				AllBooksWindow.INSTANCE.show();
-            }
-		});
-		
-		MenuItem memberIds = new MenuItem("All Member Ids");
-		memberIds.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-				hideAllWindows();
-				if(!AllMembersWindow.INSTANCE.isInitialized()) {
-					AllMembersWindow.INSTANCE.init();
-				}
-				ControllerInterface ci = new SystemController();
-				List<String> ids = ci.allMemberIds();
-				Collections.sort(ids);
-				System.out.println(ids);
-				StringBuilder sb = new StringBuilder();
-				for(String s: ids) {
-					sb.append(s + "\n");
-				}
-				System.out.println(sb.toString());
-				AllMembersWindow.INSTANCE.setData(sb.toString());
-				AllMembersWindow.INSTANCE.show();
-            }
-		});	
-		optionsMenu.getItems().addAll(login, bookIds, memberIds);
+    public void start(Stage primaryStage) throws IOException {
 
-		mainMenu.getMenus().addAll(optionsMenu);
-		Scene scene = new Scene(topContainer, 420, 375);
-		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
-		primaryStage.show();
-		*/
+     primStage = primaryStage;
 
-		
-		
-		
-	}
-	
+     primaryStage.setTitle("Library Management System");
+     parent = loadFXML("login");
+
+//        parent = loadFXML("studentDashboard");
+
+        //clean error authentication
+
+//        parent.getChildrenUnmodifiable().get(6).setVisible(false);
+        scene = new Scene(parent, 640, 480);
+
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+
+    }
 }
 
 //parent = loadFXML("Books");
