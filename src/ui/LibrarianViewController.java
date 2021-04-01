@@ -43,6 +43,9 @@ public class LibrarianViewController {
 
     @FXML
     private Label checkLbl1;
+    
+    @FXML
+    private Label availabilityLbl;
 
     @FXML
     private Button newBtn;
@@ -83,6 +86,7 @@ public class LibrarianViewController {
     		isbnlbl.setText("");
     		titlelbl.setText("");
     		copyLbl.setText("");
+    		availabilityLbl.setText("");
 
 
 
@@ -94,7 +98,8 @@ public class LibrarianViewController {
     		authorlbl.setText("Author");
     		checkLbl1.setText("" + book.getMaxCheckoutLength());
     		isbnlbl.setText(book.getIsbn());
-    		copyLbl.setText(""+book.getCopies().length);
+    		copyLbl.setText(""+book.getNumCopies());
+    		availabilityLbl.setText(Boolean.toString(book.isAvailable()));
     		
     	}
     }
