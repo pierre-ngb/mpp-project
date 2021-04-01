@@ -29,6 +29,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordFld" layoutX="110.0" layoutY="188.0" prefHeight="38.0" prefWidth="179.0" style="-fx-background-radius: 20;" />
+      <PasswordField fx:id="passwordFld" alignment="CENTER" layoutX="110.0" layoutY="188.0" prefHeight="38.0" prefWidth="179.0" promptText="Password" style="-fx-background-radius: 20;" />
    </children>
 </AnchorPane>
