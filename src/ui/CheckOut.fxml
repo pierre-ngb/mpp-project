@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;">
          <children>
@@ -40,6 +39,7 @@
             <Label text="Duration" GridPane.rowIndex="2" />
             <Label text="Chechout Date" GridPane.rowIndex="3" />
             <Label text="Due Date" GridPane.rowIndex="4" />
+
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <DatePicker prefHeight="25.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <DatePicker prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -55,8 +55,11 @@
                   <Button layoutX="169.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
                </children>
             </AnchorPane>
+
+            <TextField fx:id="durationFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
          </children>
       </GridPane>
-      <Button layoutX="150.0" layoutY="243.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
+      <Button layoutX="150.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkoutBtnAction" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
    </children>
 </AnchorPane>
