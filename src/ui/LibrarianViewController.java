@@ -112,15 +112,14 @@ public class LibrarianViewController {
     	   Book book = tableView.getSelectionModel().getSelectedItem();
     	      if(book != null) {
     	    	  
-//    	    	    	displayBookInfo(book);
     	    	    	new SystemController().deleteBook(book);
     	    	    	initViewBook();
     	    	    	
 
-//    	    	  }else {
-//    	    		  validateMessage = "No Book Selected";
-//    	    		  alertMessage();
-//    	    	  }
+
+    	      }else {
+    	    	  validateMessage = "No Book Selected";
+	    		  alertMessage();
     	      }
 
     }
@@ -184,7 +183,7 @@ public class LibrarianViewController {
     public void alertMessage() {
 	  	Alert alert = new Alert(Alert.AlertType.INFORMATION);
 	    alert.setTitle("Alert");
-	    alert.setHeaderText("Data Missing");
+	    alert.setHeaderText("Select book you want to delete!");
 	    alert.setContentText(validateMessage);
 	    alert.showAndWait();
 
