@@ -30,18 +30,14 @@ public class AddNewUserController {
 
 	private List<Author> authors;
     @FXML
-    private TextField isbnFld;
+    private TextField idFld;
 
     @FXML
-    private TextField titleFld;
+    private TextField passwordFld;
 
-    @FXML
-    private TextField checkOutDurationFld;
+   
     
-    @FXML
-    private TextField authorFld;
  
-    
 
     @FXML
     private ComboBox<Author> comboBox = new ComboBox<>();

@@ -21,8 +21,7 @@
                <children>
                   <TableView fx:id="tableView" layoutX="-25.0" layoutY="14.0" prefHeight="273.3333333333333" prefWidth="175.33333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="firstName" prefWidth="90.0" text="First Name" />
-                        <TableColumn fx:id="lastName" prefWidth="90.0" text="Last Name" />
+                      <TableColumn fx:id="id" prefWidth="170.0" text="Id" />
                     </columns>
                   </TableView>
                </children>
@@ -50,25 +49,11 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Member ID" />
-                        <Label text="State" GridPane.rowIndex="6" />
-                        <Label text="Zip" GridPane.rowIndex="7" />
-                        <Label fx:id="userNamelbl" GridPane.columnIndex="1" />
-                        <Label fx:id="passwordlbl" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label fx:id="previlagesbl" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="User ID" />
+                        <Label fx:id="userIdLbl" GridPane.columnIndex="1" />
                         <Label fx:id="userIdFld" GridPane.columnIndex="1" />
-                        <Label text="First Name" GridPane.rowIndex="1" />
-                        <Label fx:id="firstNameFld" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Last Name" GridPane.rowIndex="2" />
-                        <Label fx:id="lastNameFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Phone" GridPane.rowIndex="3" />
-                        <Label fx:id="phoneFld" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Street" GridPane.rowIndex="4" />
-                        <Label fx:id="streetFld" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="City" GridPane.rowIndex="5" />
-                        <Label fx:id="cityFld" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label fx:id="stateFld" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label fx:id="zipFld" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="Privilage" GridPane.rowIndex="1" />
+                        <Label fx:id="privilageLbl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <ButtonBar layoutX="189.0" layoutY="213.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
