@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;">
          <children>
@@ -41,8 +40,6 @@
             <Label text="Due Date" GridPane.rowIndex="4" />
 
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker prefHeight="25.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <TextField fx:id="bookNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="154.0" />
@@ -57,6 +54,8 @@
             </AnchorPane>
 
             <TextField fx:id="durationFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="checkoutDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="returnDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             
          </children>
       </GridPane>

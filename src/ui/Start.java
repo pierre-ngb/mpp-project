@@ -1,30 +1,12 @@
 package ui;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
-import business.ControllerInterface;
-import business.SystemController;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 
@@ -43,10 +25,7 @@ public class Start extends Application {
 		return primStage;
 	}
 	
-	public static class Colors {
-		static Color green = Color.web("#034220");
-		static Color red = Color.FIREBRICK;
-	}
+
 	
 	private static Stage[] allWindows = { 
 		LoginWindow.INSTANCE,
@@ -87,12 +66,6 @@ public class Start extends Application {
 
      primaryStage.setTitle("Library Management System");
      parent = loadFXML("login");
-
-//        parent = loadFXML("studentDashboard");
-
-        //clean error authentication
-
-//        parent.getChildrenUnmodifiable().get(6).setVisible(false);
         scene = new Scene(parent, 640, 480);
 
         primaryStage.setScene(scene);

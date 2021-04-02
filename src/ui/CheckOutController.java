@@ -16,9 +16,13 @@ import javafx.util.StringConverter;
 import utils.Utils;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import business.Author;
 import business.Book;
+import business.ControllerInterface;
+import business.LibraryMember;
 import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,20 +32,14 @@ import javafx.event.ActionEvent;
 
 public class CheckOutController {
 
-    @FXML
-    private ComboBox<Book> comboBook;
-
-    @FXML
-    private ComboBox<?> memberCombo;
-
-    @FXML
+     @FXML
     private TextField durationFld;
 
     @FXML
-    private DatePicker checkoutDate;
+    private TextField checkoutDate;
 
     @FXML
-    private DatePicker returnDate;
+    private TextField returnDate;
     
     @FXML
     private Button findBook;
@@ -49,14 +47,24 @@ public class CheckOutController {
     @FXML
     private TextField bookNameFld;
 
-
     @FXML
     private TextField memberNameFld;
+    
+    private Book book;
+    private LibraryMember member;
 
     @FXML
     void checkoutBtnAction(ActionEvent event) {
 
-    	
+    	ControllerInterface ci = new SystemController();
+    	ci.checkout(book, member);
+    	ci.allMembers().forEach(m -> {
+    		System.out.println(m);
+    		if(m.getRecord() != null) {
+    			System.out.println("Checkout records");
+    			m.getRecord().getRecords().forEach(System.out::println);
+    		}
+    	});
     }
     
     @FXML
@@ -79,27 +87,27 @@ public class CheckOutController {
     		
     		stage.showAndWait();
     		if(con.returnBook != null) {
+    			book = con.returnBook;
     			bookNameFld.setText(con.returnBook.getTitle());
-    			
-    		}
-    		
-    		
+    		    LocalDate dt = Utils.parse(LocalDate.now().format(
+    					DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    		    String st = Utils.format(dt);
+    		    checkoutDate.setText(st);
+    		    LocalDate lt = LocalDate.now().plusDays(con.returnBook.getMaxCheckoutLength());
+    			returnDate.setText(Utils.format(lt));
+    		}  		
     		
     	} catch (IOException e) {
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     	}
-    	
-    	
-    	
-    	
+    
     }
     
+
     
     @FXML
-    void findMemberAction(ActionEvent event) {
-
-    	
+    void findMemberAction(ActionEvent event) { 	
     	
     	try {
         	  FXMLLoader loader = new FXMLLoader();
@@ -119,19 +127,14 @@ public class CheckOutController {
     		stage.showAndWait();
     		if(m.getLibraryMember() != null) {
     			memberNameFld.setText(m.getLibraryMember().getFirstName() + " " + m.getLibraryMember().getLastName());
-    			
+    			member = m.getLibraryMember();
     		}
-    		
-    		
     		
     	} catch (IOException e) {
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     	}
-    	
-    	
-    	
-    	
+    
     }
 
 
@@ -140,35 +143,14 @@ public class CheckOutController {
     	
     	bookNameFld.setEditable(false);
     	memberNameFld.setEditable(false);
-
-
-//    	final ObservableList<Book> books = FXCollections.observableList(new SystemController().allBooks());
-//		comboBook.itemsProperty().setValue(books);
-//    	convertComboDisplay();
+    	checkoutDate.setEditable(false);
+    	returnDate.setEditable(false);
     	
-    	
-//    	Utils.numberOnly(noCopyFld);
-//    	Utils.numberOnly(checkOutDurationFld);
+    	Utils.numberOnly(durationFld);
+//    	Utils.numberOnly(checkoutDate);
     	    	
     }
-    
-	private void convertComboDisplay() {
-    	comboBook.setConverter(new StringConverter<Book>() {
-    		
-    		@Override
-    		public String toString(Book book) {
-    			return book.getTitle() ;
-    		}
-    		
-    		@Override
-    		public Book fromString(final String string) {
-    			return comboBook.getItems().stream().filter(
-    					b -> b.getTitle().equals(string))
-    					.findFirst().orElse(null);
-    		}
-    	});
-    }
-    
+     
    
 
 }
