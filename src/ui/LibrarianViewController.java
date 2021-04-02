@@ -1,6 +1,7 @@
 package ui;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import business.Book;
 import business.ControllerInterface;
@@ -95,7 +96,16 @@ public class LibrarianViewController {
     		
     		titlelbl.setText(book.getTitle());
     	
-    		authorlbl.setText("Author");
+    		if (book.getAuthors().size() > 1) {
+    			String s = book.getAuthors().stream().map(a -> a.getFirstName() +" "+  a.getLastName())
+						.collect(Collectors.joining(","))
+						.toString();
+    			authorlbl.setText(s);
+    		} else {
+    			String authorsName = book.getAuthors().get(0).getFirstName() + " " + book.getAuthors().get(0).getLastName();
+    			authorlbl.setText(authorsName);
+    		}
+    		
     		checkLbl1.setText("" + book.getMaxCheckoutLength());
     		isbnlbl.setText(book.getIsbn());
     		copyLbl.setText(""+book.getNumCopies());
