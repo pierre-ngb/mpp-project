@@ -9,22 +9,25 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
    <children>
-      <AnchorPane prefHeight="46.0" prefWidth="400.0" style="-fx-background-color: #73C3FB;">
+      <AnchorPane prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;">
          <children>
-            <Label layoutX="160.0" layoutY="14.0" style="-fx-font-weight: 700;" text="Checkout Book" textFill="NAVY" AnchorPane.topAnchor="15.0">
+            <Label layoutX="250.0" layoutY="13.0" style="-fx-font-weight: 700;" text="Checkout Book" textFill="NAVY" AnchorPane.topAnchor="13.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#backBtnAction" text="Back" />
+            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#backBtnAction" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
-      <GridPane layoutX="100.0" layoutY="67.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
+      <GridPane layoutX="100.0" layoutY="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.33331298828125" minWidth="10.0" prefWidth="142.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="198.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.6666615804037" minWidth="10.0" prefWidth="254.66670735677087" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.33331298828125" minWidth="10.0" prefWidth="284.6666259765625" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -43,14 +46,14 @@
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <TextField fx:id="bookNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="154.0" />
-                  <Button fx:id="findBook" layoutX="169.0" layoutY="1.0" mnemonicParsing="false" onAction="#findBookAction" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
+                  <TextField fx:id="bookNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="215.0" />
+                  <Button fx:id="findBook" layoutX="231.0" layoutY="1.0" mnemonicParsing="false" onAction="#findBookAction" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="152.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="memberNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="154.0" />
-                  <Button layoutX="169.0" layoutY="1.0" mnemonicParsing="false" onAction="#findMemberAction" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
+                  <TextField fx:id="memberNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="215.0" />
+                  <Button layoutX="232.0" layoutY="1.0" mnemonicParsing="false" onAction="#findMemberAction" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
                </children>
             </AnchorPane>
 
@@ -60,6 +63,6 @@
             
          </children>
       </GridPane>
-      <Button layoutX="150.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkoutBtnAction" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE" AnchorPane.bottomAnchor="22.0" />
+      <Button layoutX="250.0" layoutY="245.0" mnemonicParsing="false" onAction="#checkoutBtnAction" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE" AnchorPane.bottomAnchor="21.666666666666686" />
    </children>
 </AnchorPane>

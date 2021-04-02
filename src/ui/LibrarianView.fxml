@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="338.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LibrarianViewController">
+<AnchorPane prefHeight="338.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LibrarianViewController">
 
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="121.0" layoutY="25.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
@@ -75,6 +75,9 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#backBtnAction" text="Back" />
+      <Button layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#backBtnAction" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

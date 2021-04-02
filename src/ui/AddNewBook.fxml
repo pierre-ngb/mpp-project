@@ -54,10 +54,5 @@
          </children>
       </GridPane>
       <Button layoutX="160.0" layoutY="224.0" mnemonicParsing="false" onAction="#addBookAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="10.0" />
-      <Label layoutX="358.0" layoutY="16.0" style="-fx-font-weight: 700;" text="X" textFill="#d30e0e" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
