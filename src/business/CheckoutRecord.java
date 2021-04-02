@@ -2,7 +2,9 @@ package business;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CheckoutRecord implements Serializable{
 
@@ -11,21 +13,22 @@ public class CheckoutRecord implements Serializable{
 	 */
 	private static final long serialVersionUID = 3271988687657774362L;
 	private LibraryMember member;
-	private HashMap<LocalDate, CheckoutRecordEntry> records;
+	private List<CheckoutRecordEntry> records;
 	
 	public CheckoutRecord(LibraryMember member) {
 		this.member = member;
+		records = new ArrayList<CheckoutRecordEntry>();
 	}
 	
-	public void checkout(CheckoutRecordEntry rec) {
-		records.put(rec.getCheckoutDate(), rec);
+	public void addEntry(CheckoutRecordEntry rec) {
+		records.add(rec);
 	}
 
 	public LibraryMember getMember() {
 		return member;
 	}
 
-	public HashMap<LocalDate, CheckoutRecordEntry> getRecords() {
+	public List<CheckoutRecordEntry> getRecords() {
 		return records;
 	}
 	

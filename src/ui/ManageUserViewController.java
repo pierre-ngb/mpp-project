@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import business.Book;
 import business.ControllerInterface;
+import business.LibraryMember;
 import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,21 +23,23 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class LibrarianViewController {
+public class ManageUserViewController {
 
     @FXML
-    private TableView<Book> tableView;
+    private TableView<LibraryMember> tableView;
 
     @FXML
-    private TableColumn<Book, String> col;
+    private TableColumn<LibraryMember, String> firstName;
+	@FXML
+	private TableColumn<LibraryMember, String> lastName;
     @FXML
-    private Label titlelbl;
+    private Label userNamelbl;
 
     @FXML
-    private Label isbnlbl;
+    private Label passwordlbl;
 
     @FXML
-    private Label authorlbl;
+    private Label previlagesbl;
 
     @FXML
     private Label copyLbl;
@@ -66,10 +69,14 @@ public class LibrarianViewController {
     }
     
     public void initViewBook() {
+    	
     	tableView.getItems().clear();
-    	col.setCellValueFactory(new PropertyValueFactory<>("Title"));
+    	
+		firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
     	ControllerInterface c = new SystemController();
-    	c.allBooks().forEach(t->{
+    	c.allMembers().forEach(t->{
     		tableView.getItems().add(t);
     	});
     	displayBookInfo(null);
@@ -78,28 +85,20 @@ public class LibrarianViewController {
     	displayBookInfo(newValue));
     }
   
-    public void displayBookInfo(Book book) {
-    	if (book == null) {
-    		titlelbl.setText("");
-    		authorlbl.setText("");
-    		checkLbl1.setText("");
-    		isbnlbl.setText("");
-    		titlelbl.setText("");
-    		copyLbl.setText("");
-    		availabilityLbl.setText("");
-
-
-
+    public void displayBookInfo(LibraryMember member) {
+    	if (member == null) {
+    		userNamelbl.setText("");
+    		passwordlbl.setText("");
+    		previlagesbl.setText("");
+    	
     		
     	}else {
     		
-    		titlelbl.setText(book.getTitle());
+    		userNamelbl.setText(member.getFirstName() + " " + member.getLastName());
     	
-    		authorlbl.setText("Author");
-    		checkLbl1.setText("" + book.getMaxCheckoutLength());
-    		isbnlbl.setText(book.getIsbn());
-    		copyLbl.setText(""+book.getNumCopies());
-    		availabilityLbl.setText(Boolean.toString(book.isAvailable()));
+    		passwordlbl.setText("*******");
+    		previlagesbl.setText("****");
+
     		
     	}
     }
@@ -108,23 +107,23 @@ public class LibrarianViewController {
     @FXML
     void checkbtnAction(ActionEvent event) {
     	
-    	
-        Book book = tableView.getSelectionModel().getSelectedItem();
-        if(book != null) {
-      	  boolean ok = editBook(book);
+    	/*
+    	LibraryMember member = tableView.getSelectionModel().getSelectedItem();
+        if(member != null) {
+      	  boolean ok = editBook(member);
       	  
       	  if(ok) {
 //      	    	displayBookInfo(book);
-      	    	new SystemController().saveBook(book);
+      	    	new SystemController().saveBook(member);
       	    	initViewBook();
-      	    	tableView.getSelectionModel().select(book);
-      	    	displayBookInfo(book);
+      	    	tableView.getSelectionModel().select(member);
+      	    	displayBookInfo(member);
 
       	  }
         }else {
       	  validateMessage = "No Book Selected";
   		  alertMessage();
-        }
+        }*/
     	
 
     }
@@ -144,10 +143,11 @@ public class LibrarianViewController {
     @FXML
     void deletebtnAction(ActionEvent event) {
     	
-    	   Book book = tableView.getSelectionModel().getSelectedItem();
-    	      if(book != null) {
+    	   LibraryMember member = tableView.getSelectionModel().getSelectedItem();
+    	   
+    	      if(member != null) {
     	    	  
-    	    	    	new SystemController().deleteBook(book);
+    	    	    	new SystemController().deleteMember(member);
     	    	    	initViewBook();
     	    	    	
 
@@ -162,16 +162,17 @@ public class LibrarianViewController {
     @FXML
     void editbtnAction(ActionEvent event) {
 
-      Book book = tableView.getSelectionModel().getSelectedItem();
-      if(book != null) {
-    	  boolean ok = editBook(book);
+    /*  LibraryMember member = tableView.getSelectionModel().getSelectedItem();
+      
+      if(member != null) {
+    	  boolean ok = editBook(member);
     	  
     	  if(ok) {
 //    	    	displayBookInfo(book);
-    	    	new SystemController().saveBook(book);
+    	    	new SystemController().saveBook(member);
     	    	initViewBook();
-    	    	tableView.getSelectionModel().select(book);
-    	    	displayBookInfo(book);
+    	    	tableView.getSelectionModel().select(member);
+    	    	displayBookInfo(member);
 
     	  }
       }else {
@@ -179,13 +180,13 @@ public class LibrarianViewController {
 		  alertMessage();
       }
 
-    
+    */
 
     }
     
     
 
-    public boolean editBook(Book book) {
+    public boolean editBook(LibraryMember member) {
     	try {
       	  FXMLLoader loader = new FXMLLoader();
       	  loader.setLocation(Start.class.getResource("BookEditDialog" + ".fxml"));
@@ -199,8 +200,8 @@ public class LibrarianViewController {
   		stage.setScene(newScene);
   		
   		BookEditDialogController con = loader.getController();
-  		  con.setDialogStage(stage);
-  		  con.setBook(book);
+//  		  con.setDialogStage(stage);
+//  		  con.setBook(member);
   		
   		stage.showAndWait();
   		
@@ -217,19 +218,19 @@ public class LibrarianViewController {
     @FXML
     void newBtnAction(ActionEvent event) {
     	
-    	addNewbook();
+    	addNewMember();
     	initialize();
     	
     }
     
-    public void addNewbook() {
+    public void addNewMember() {
     	
     	try {
         	  FXMLLoader loader = new FXMLLoader();
-        	  loader.setLocation(Start.class.getResource("AddNewBook" + ".fxml"));
+        	  loader.setLocation(Start.class.getResource("NewUser" + ".fxml"));
     		AnchorPane page = (AnchorPane)loader.load();
     		Stage stage = new Stage();
-    		stage.setTitle("Add new book");
+    		stage.setTitle("Add new member");
     		stage.initModality(Modality.WINDOW_MODAL);
     		
     		stage.initOwner(Start.getPrimaryStage());

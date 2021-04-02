@@ -182,5 +182,13 @@ public class DataAccessFacade implements DataAccess {
 		}
 		private static final long serialVersionUID = 5399827794066637059L;
 	}
+
+
+
+	@Override
+	public void deleteMember(LibraryMember member) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

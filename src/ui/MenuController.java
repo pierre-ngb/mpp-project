@@ -38,11 +38,19 @@ public class MenuController {
 
     @FXML
     void manageMemberAction(ActionEvent event) {
+    	
+    	try {
+			Start.setRoot("SuperUser");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
 
     @FXML
     void manageUserAction(ActionEvent event) {
+	
 
     }
     }

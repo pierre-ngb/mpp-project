@@ -26,7 +26,7 @@ public class AllMembersController {
 	@FXML
 	private TableColumn<LibraryMember, String> adress;
 	
-	private  LibraryMember returnMember;
+	LibraryMember returnMember;
 	
 	
 	public LibraryMember getLibraryMember() {

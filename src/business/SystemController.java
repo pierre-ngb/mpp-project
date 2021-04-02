@@ -1,5 +1,6 @@
 package business;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +73,24 @@ public class SystemController implements ControllerInterface {
 		da.deleteBook(book);
 		
 	}
+	
+	@Override
+	public void deleteMember(LibraryMember member) {
+		// TODO Auto-generated method stub
+		DataAccess da = new DataAccessFacade();
+		da.deleteMember(member);
+		
+	}
+	
+	@Override
+	public void checkout(Book book, LibraryMember member) {
+		BookCopy copy = book.getNextAvailableCopy();
+		int maxCopy = book.getMaxCheckoutLength();
+		member.checkout(copy, LocalDate.now(), LocalDate.now().plusDays(maxCopy));
+		DataAccess da = new DataAccessFacade();
+		da.saveNewMember(member);
+	}
+	
 	
 
 	

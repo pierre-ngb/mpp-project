@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,6 +18,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#backBtnAction" text="Back" />
          </children>
       </AnchorPane>
       <GridPane layoutX="100.0" layoutY="67.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0">
@@ -41,8 +41,6 @@
             <Label text="Due Date" GridPane.rowIndex="4" />
 
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker prefHeight="25.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <TextField fx:id="bookNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="154.0" />
@@ -57,6 +55,8 @@
             </AnchorPane>
 
             <TextField fx:id="durationFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="checkoutDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="returnDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             
          </children>
       </GridPane>
