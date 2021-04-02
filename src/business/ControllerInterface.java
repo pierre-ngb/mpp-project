@@ -24,7 +24,8 @@ public interface ControllerInterface {
 	
 	public void saveNewMember(LibraryMember member) ;
 	public List<User> allUsers();
-	public void saveNewUser(User user) ;
+	
+	public void saveUser(User user) ;
 	
 	
 

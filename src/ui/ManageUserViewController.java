@@ -214,7 +214,7 @@ public class ManageUserViewController {
     		Scene newScene = new Scene(page);
     		stage.setScene(newScene);
     		
-    		AddNewMemberController con = loader.getController();
+    		AddNewUserController con = loader.getController();
     		  con.setDialogStage(stage);
     		
     		stage.showAndWait();

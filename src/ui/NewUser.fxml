@@ -43,9 +43,9 @@
             <Label text="Password" GridPane.rowIndex="1" />
             <TextField fx:id="passwordFld" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Privilage" GridPane.rowIndex="2" />
-            <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Select Privilage" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="comboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button layoutX="294.0" layoutY="521.0" mnemonicParsing="false" onAction="#addMemberAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="61.0" />
+      <Button layoutX="294.0" layoutY="521.0" mnemonicParsing="false" onAction="#addUserAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="61.0" />
    </children>
 </AnchorPane>

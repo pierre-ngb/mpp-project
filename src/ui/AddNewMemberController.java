@@ -15,6 +15,7 @@ import utils.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import business.Address;
 import business.Author;
@@ -124,7 +125,11 @@ public class AddNewMemberController {
     @FXML
     public void initialize() {
     	
-    	
+    	userIdFld.setEditable(false);
+   	 Random r = new Random();
+   	 
+   	 int a = r.nextInt(10000);;
+   	userIdFld.setText(""+ a);
 //    	new SystemController().allBooks().forEach(b->{
 //    		
 //    		final ObservableList<Author> authors = FXCollections.observableList(b.getAuthors());

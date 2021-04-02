@@ -68,6 +68,15 @@ public class SystemController implements ControllerInterface {
 		da.saveBook(book);
 		
 	}
+	
+	
+	@Override
+	public void saveUser(User user) {
+		DataAccess da = new DataAccessFacade();
+		da.saveUser(user);
+		
+	}
+	
 	@Override
 	public void deleteBook(Book book) {
 		// TODO Auto-generated method stub
@@ -112,11 +121,7 @@ public class SystemController implements ControllerInterface {
 		
 		
 	}
-	@Override
-	public void saveNewUser(User user) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	@Override
 	public List<User> allUsers() {
 		
@@ -131,6 +136,7 @@ public class SystemController implements ControllerInterface {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	
 
