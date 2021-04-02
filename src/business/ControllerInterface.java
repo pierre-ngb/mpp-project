@@ -15,10 +15,10 @@ public interface ControllerInterface {
 	public List<LibraryMember> allMembers();
 	public void saveBook(Book book);
 	public void deleteBook(Book book);
-	
+	public Book getBookByIsbn(String isbn);
 	public void deleteMember(LibraryMember member);
-
-	public void checkout(Book book, LibraryMember member);
+	public void checkout(Book book, LibraryMember member) throws LibrarySystemException;
+	public LibraryMember getMemberById(String id);
 	
 
 	

@@ -13,15 +13,36 @@ public class Main {
 //		System.out.println(allHavingAtLeastTwoCopies());
 //		System.out.println(allHavingMultipleAuthors());
 		ControllerInterface ci = new SystemController();
-		ci.allBooks().forEach( x -> {
-			System.out.println(x.getTitle().toString() + ", "+x);
-			for(BookCopy c: x.getCopies()) {
-				System.out.println(c.getCopyNum());
-				c.changeAvailability();
-			}
+		try {
+			Book book = ci.getBookByIsbn("99-22223");
+			LibraryMember member = ci.getMemberById("1002");
 			
-			System.out.println(x.getTitle().toString() + ", "+x);
-		});
+			ci.checkout(book, member);
+			ci.allMembers().stream()
+			.filter(x -> x.getRecord().getRecords().size()>0)
+			.collect(Collectors.toList())
+			.forEach(m -> {
+	    		System.out.println(m);
+	    			System.out.println("Checkout records");
+	    			m.getRecord().getRecords().forEach(System.out::println);
+	    		
+	    	});
+		} catch (LibrarySystemException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+		
+//		ci.allBooks().forEach( x -> {
+//			System.out.println(x.getTitle().toString() + ", "+x);
+//			for(BookCopy c: x.getCopies()) {
+//				System.out.println(c.getCopyNum());
+//				c.changeAvailability();
+//			}
+//			
+//			System.out.println(x.getTitle().toString() + ", "+x);
+//		});
 
 	}
 	//Returns a list of all ids of LibraryMembers whose zipcode contains the digit 3

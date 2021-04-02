@@ -1,7 +1,5 @@
 package ui;
 
-
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +21,7 @@ import business.Author;
 import business.Book;
 import business.ControllerInterface;
 import business.LibraryMember;
+import business.LibrarySystemException;
 import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,14 +56,12 @@ public class CheckOutController {
     void checkoutBtnAction(ActionEvent event) {
 
     	ControllerInterface ci = new SystemController();
-    	ci.checkout(book, member);
-    	ci.allMembers().forEach(m -> {
-    		System.out.println(m);
-    		if(m.getRecord() != null) {
-    			System.out.println("Checkout records");
-    			m.getRecord().getRecords().forEach(System.out::println);
-    		}
-    	});
+    	try {
+			ci.checkout(book, member);
+		} catch (LibrarySystemException e) {
+			System.out.println(e.getMessage());
+		}
+    	
     }
     
     @FXML
