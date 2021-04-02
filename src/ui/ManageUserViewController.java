@@ -33,27 +33,12 @@ public class ManageUserViewController {
     private TableColumn<User, String> id;
 	
     @FXML
-    private Label userIdFld;
+    private Label userIdLbl;
 
     @FXML
-    private Label firstNameFld;
+    private Label privilageLbl;
 
-    @FXML
-    private Label lastNameFld;
-    
-    @FXML
-    private Label phoneFld;
-    
-    @FXML
-    private Label streetFld;
-    
-    @FXML
-    private Label cityFld;
-    
-    @FXML
-    private Label stateFld;
-    @FXML
-    private Label zipFld;
+
 
 
 
@@ -80,7 +65,7 @@ public class ManageUserViewController {
     	
     	tableView.getItems().clear();
     	
-		id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		id.setCellValueFactory(new PropertyValueFactory<>("Id"));
 
     	ControllerInterface c = new SystemController();
     	c.allUsers().forEach(t->{
@@ -97,23 +82,17 @@ public class ManageUserViewController {
  
     	if (user == null) {
     	
-    		
+    		userIdLbl.setText("");
+    		privilageLbl.setText("");
+
     	
     		
     	}else {
     		
     
     		
-//    		userIdFld.setText(member.getMemberId());
-//    		firstNameFld.setText(member.getFirstName());
-//    		lastNameFld.setText(member.getLastName());
-//    		
-//    		phoneFld.setText(member.getTelephone());
-//    		streetFld.setText(member.getAddress().getStreet());
-//    		cityFld.setText(member.getAddress().getCity());
-//    		
-//    		stateFld.setText(member.getAddress().getState());
-//    		zipFld.setText(member.getAddress().getZip());
+    		userIdLbl.setText(user.getId());
+    		privilageLbl.setText(user.getAuthorization().toString());
 
     		
     	}
@@ -216,19 +195,19 @@ public class ManageUserViewController {
     @FXML
     void newBtnAction(ActionEvent event) {
     	
-    	addNewMember();
+    	addNewUser();
     	initialize();
     	
     }
     
-    public void addNewMember() {
+    public void addNewUser() {
     	
     	try {
         	  FXMLLoader loader = new FXMLLoader();
-        	  loader.setLocation(Start.class.getResource("NewMember" + ".fxml"));
+        	  loader.setLocation(Start.class.getResource("NewUser" + ".fxml"));
     		AnchorPane page = (AnchorPane)loader.load();
     		Stage stage = new Stage();
-    		stage.setTitle("Add new member");
+    		stage.setTitle("Add new User");
     		stage.initModality(Modality.WINDOW_MODAL);
     		
     		stage.initOwner(Start.getPrimaryStage());

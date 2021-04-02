@@ -40,12 +40,12 @@ public class LoginViewController {
 	 
 	 public void loginButtonAction(ActionEvent event) {
 
-    System.out.println("blocked");
     
     validatingFields();
 
 	if (validateMessage.length() > 0) {
-		
+	    System.out.println("blocked");
+
 		   Utils.makeAlert(validateMessage,"Data Missing",AlertType.ERROR);
 
 		return;

@@ -78,6 +78,7 @@ public class Utils {
     	al.setTitle("Alert");
         al.setHeaderText(title);
         al.setContentText(message);
+        al.show();
         
     	return al;
     }
