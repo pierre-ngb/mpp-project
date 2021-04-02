@@ -185,10 +185,8 @@ public class DataAccessFacade implements DataAccess {
 
 
 
-	@Override
-	public void deleteMember(LibraryMember member) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
+
 	
 }

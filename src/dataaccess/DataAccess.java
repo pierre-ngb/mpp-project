@@ -13,7 +13,8 @@ public interface DataAccess {
 	public void saveNewMember(LibraryMember member); 
 	public void saveBook(Book book);
 	public void deleteBook(Book book);
-	public void deleteMember(LibraryMember member);
+	//memberMethods
+
 
 
 }

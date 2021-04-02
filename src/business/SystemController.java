@@ -60,6 +60,8 @@ public class SystemController implements ControllerInterface {
 		retval.addAll(da.readMemberMap().values());
 		return retval;
 	}
+	
+
 	@Override
 	public void saveBook(Book book) {
 		DataAccess da = new DataAccessFacade();
@@ -74,13 +76,6 @@ public class SystemController implements ControllerInterface {
 		
 	}
 	
-	@Override
-	public void deleteMember(LibraryMember member) {
-		// TODO Auto-generated method stub
-		DataAccess da = new DataAccessFacade();
-		da.deleteMember(member);
-		
-	}
 	
 	@Override
 	public void checkout(Book book, LibraryMember member) {
@@ -89,6 +84,30 @@ public class SystemController implements ControllerInterface {
 		member.checkout(copy, LocalDate.now(), LocalDate.now().plusDays(maxCopy));
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(member);
+	}
+	@Override
+	public void saveNewMember(LibraryMember member) {
+		// TODO Auto-generated method stub
+					// TODO Auto-generated method stub
+			DataAccess da = new DataAccessFacade();
+			da.saveNewMember(member);
+			
+		
+		
+	}
+	@Override
+	public void saveNewUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<User> allUsers() {
+		
+			DataAccess da = new DataAccessFacade();
+			List<User> retval = new ArrayList<>();
+			retval.addAll(da.readUserMap().values());
+			return retval;
+		
 	}
 	
 	

@@ -40,7 +40,7 @@ public class MenuController {
     void manageMemberAction(ActionEvent event) {
     	
     	try {
-			Start.setRoot("SuperUser");
+			Start.setRoot("ManageMembers");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,6 +51,12 @@ public class MenuController {
     @FXML
     void manageUserAction(ActionEvent event) {
 	
+    	try {
+			Start.setRoot("ManageUsers");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
     }
     }

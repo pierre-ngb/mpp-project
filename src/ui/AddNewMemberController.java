@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.Address;
 import business.Author;
 import business.Book;
 import business.ControllerInterface;
+import business.LibraryMember;
 import business.LoginException;
 import business.SystemController;
 import dataaccess.Auth;
@@ -30,16 +32,27 @@ public class AddNewMemberController {
 
 	private List<Author> authors;
     @FXML
-    private TextField isbnFld;
+    private TextField userIdFld;
 
     @FXML
-    private TextField titleFld;
+    private TextField firstNameFld;
 
     @FXML
-    private TextField checkOutDurationFld;
+    private TextField lastNameFld;
     
     @FXML
-    private TextField authorFld;
+    private TextField phoneFld;
+    
+    @FXML
+    private TextField streetFld;
+    
+    @FXML
+    private TextField cityFld;
+    
+    @FXML
+    private TextField stateFld;
+    @FXML
+    private TextField zipFld;
  
     
 
@@ -66,23 +79,38 @@ public class AddNewMemberController {
     }
 
     @FXML
-    void addBookAction(ActionEvent event) {
+    void addMemberAction(ActionEvent event) {
 
     	  validatingFields();
 
     		if (validateMessage.length() > 0) {
     			
-    			alertMessage();
+    			Utils.alertMessage("Data Missing",validateMessage);
     			return;
     		}
     		
-    		Book book1 = new Book(isbnFld.getText().trim(), titleFld.getText().trim(), 
-    				Integer.valueOf(checkOutDurationFld.getText()), authors);
-    		for(int i = 0; i < Integer.valueOf(noCopyFld.getText()); i++) {
-    			book1.addCopy();
-    		}
-    		new SystemController().saveBook(book1);
+    		Address adres = new Address(streetFld.getText().trim(), cityFld.getText().trim(), stateFld.getText().trim(), zipFld.getText().trim());
+    		
+    		
+    		LibraryMember member = new LibraryMember(userIdFld.getText().trim(), firstNameFld.getText().trim(), 
+    				lastNameFld.getText().trim(), phoneFld.getText().trim(), adres);
+//    		for(int i = 0; i < Integer.valueOf(noCopyFld.getText()); i++) {
+//    			book1.addCopy();
+//    		}
+    		
+    		
+    		new SystemController().saveNewMember(member);
     		this.dialogStage.close();
+    		
+
+    		
+//    		Book book1 = new Book(isbnFld.getText().trim(), titleFld.getText().trim(), 
+//    				Integer.valueOf(checkOutDurationFld.getText()), authors);
+//    		for(int i = 0; i < Integer.valueOf(noCopyFld.getText()); i++) {
+//    			book1.addCopy();
+//    		}
+//    		new SystemController().saveBook(book1);
+//    		this.dialogStage.close();
     		
     }
 
@@ -95,28 +123,28 @@ public class AddNewMemberController {
     public void initialize() {
     	
     	
-    	new SystemController().allBooks().forEach(b->{
-    		
-    		final ObservableList<Author> authors = FXCollections.observableList(b.getAuthors());
-    		comboBox.itemsProperty().setValue(authors);
-    	});
-    	convertComboDisplay();
-    	selectAuthor();
-    	Utils.numberOnly(noCopyFld);
-    	Utils.numberOnly(checkOutDurationFld);
+//    	new SystemController().allBooks().forEach(b->{
+//    		
+//    		final ObservableList<Author> authors = FXCollections.observableList(b.getAuthors());
+//    		comboBox.itemsProperty().setValue(authors);
+//    	});
+//    	convertComboDisplay();
+//    	selectAuthor();
+//    	Utils.numberOnly(noCopyFld);
+//    	Utils.numberOnly(checkOutDurationFld);
     	    	
     }
     
     @FXML
     public void selectAuthor() {
     	
-    	authors = new ArrayList<Author>();
-    	comboBox.getSelectionModel().selectedItemProperty().addListener((observable,oldValu,newValue)->{
-    		
-    		String authorsName = newValue.getFirstName() + " " + newValue.getLastName();
-    		authorFld.setText(authorsName);
-    		authors.add(newValue);
-    	});
+//    	authors = new ArrayList<Author>();
+//    	comboBox.getSelectionModel().selectedItemProperty().addListener((observable,oldValu,newValue)->{
+//    		
+//    		String authorsName = newValue.getFirstName() + " " + newValue.getLastName();
+//    		authorFld.setText(authorsName);
+//    		authors.add(newValue);
+//    	});
     }
     
     private void convertComboDisplay() {
@@ -141,39 +169,48 @@ public class AddNewMemberController {
     public void validatingFields() {
     	validateMessage = "";
     	
-    	if (isbnFld.getText().length() < 1) {
-    		validateMessage = "Enter ISBN\n";
+    	if (userIdFld.getText().length() < 1) {
+    		validateMessage = "Enter User ID\n";
     	}
-    	if (titleFld.getText().length() < 1) {
-    		validateMessage = validateMessage +"Enter Title\n";
+    	if (firstNameFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter First Name\n";
     		 
     	}
     	
-    	if (checkOutDurationFld.getText().length() < 1) {
-    		validateMessage = validateMessage +"Enter Duration\n";
+    	if (lastNameFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter Last Name\n";
     		 
     	}
     	
-    	if (noCopyFld.getText().length() < 1) {
-    		validateMessage = validateMessage +"Enter Number Copies\n";
+    	if (phoneFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter Phone\n";
     		 
     	}
     	
-    	if (authorFld.getText().length() < 1) {
-    		validateMessage = validateMessage +"Enter Author\n";
+    	
+    	if (streetFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter Street\n";
+    		 
+    	}
+    	
+    	if (cityFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter City\n";
+    		 
+    	}
+    	
+    	if (stateFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter State\n";
+    		 
+    	}
+    	
+    	if (zipFld.getText().length() < 1) {
+    		validateMessage = validateMessage +"Enter Zip\n";
     		 
     	}
     }
  
  
-    public void alertMessage() {
-    	  	Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    	    alert.setTitle("Alert");
-    	    alert.setHeaderText("Data Missing");
-    	    alert.setContentText(validateMessage);
-    	    alert.showAndWait();
-   
-}
+
   
 
     

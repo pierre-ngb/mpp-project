@@ -6,6 +6,7 @@ import java.time.format.DateTimeParseException;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 public class Utils {
@@ -70,4 +71,13 @@ public class Utils {
     	// Try to parse the String.
     	return Utils.parse(dateString) != null;
     }
+    
+    public static void alertMessage(String typeAler,String meesage) {
+	  	Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setTitle("Alert");
+	    alert.setHeaderText(typeAler);
+	    alert.setContentText(meesage);
+	    alert.showAndWait();
+
+}
 }

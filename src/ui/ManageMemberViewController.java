@@ -6,7 +6,6 @@ import business.Book;
 import business.ControllerInterface;
 import business.LibraryMember;
 import business.SystemController;
-import dataaccess.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,14 +23,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ManageUserViewController {
+public class ManageMemberViewController {
 
     @FXML
-    private TableView<User> tableView;
+    private TableView<LibraryMember> tableView;
 
     @FXML
-    private TableColumn<User, String> id;
-	
+    private TableColumn<LibraryMember, String> firstName;
+	@FXML
+	private TableColumn<LibraryMember, String> lastName;
     @FXML
     private Label userIdFld;
 
@@ -80,10 +80,11 @@ public class ManageUserViewController {
     	
     	tableView.getItems().clear();
     	
-		id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
     	ControllerInterface c = new SystemController();
-    	c.allUsers().forEach(t->{
+    	c.allMembers().forEach(t->{
     		tableView.getItems().add(t);
     	});
     	displayBookInfo(null);
@@ -92,10 +93,10 @@ public class ManageUserViewController {
     	displayBookInfo(newValue));
     }
   
-    public void displayBookInfo(User user) {
+    public void displayBookInfo(LibraryMember member) {
     	
  
-    	if (user == null) {
+    	if (member == null) {
     	
     		
     	
@@ -104,16 +105,16 @@ public class ManageUserViewController {
     		
     
     		
-//    		userIdFld.setText(member.getMemberId());
-//    		firstNameFld.setText(member.getFirstName());
-//    		lastNameFld.setText(member.getLastName());
-//    		
-//    		phoneFld.setText(member.getTelephone());
-//    		streetFld.setText(member.getAddress().getStreet());
-//    		cityFld.setText(member.getAddress().getCity());
-//    		
-//    		stateFld.setText(member.getAddress().getState());
-//    		zipFld.setText(member.getAddress().getZip());
+    		userIdFld.setText(member.getMemberId());
+    		firstNameFld.setText(member.getFirstName());
+    		lastNameFld.setText(member.getLastName());
+    		
+    		phoneFld.setText(member.getTelephone());
+    		streetFld.setText(member.getAddress().getStreet());
+    		cityFld.setText(member.getAddress().getCity());
+    		
+    		stateFld.setText(member.getAddress().getState());
+    		zipFld.setText(member.getAddress().getZip());
 
     		
     	}
@@ -156,6 +157,24 @@ public class ManageUserViewController {
 
     }
     String validateMessage = "";
+    @FXML
+    void deletebtnAction(ActionEvent event) {
+    	
+    	   LibraryMember member = tableView.getSelectionModel().getSelectedItem();
+    	   
+    	      if(member != null) {
+    	    	  
+//    	    	    	new SystemController().deleteMember(member);
+//    	    	    	initViewBook();
+    	    	    	
+
+
+    	      }else {
+    	    	  validateMessage = "No Book Selected";
+	    		  alertMessage();
+    	      }
+
+    }
 
     @FXML
     void editbtnAction(ActionEvent event) {

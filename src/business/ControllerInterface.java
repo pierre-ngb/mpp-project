@@ -6,6 +6,7 @@ import java.util.List;
 import business.Book;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
+import dataaccess.User;
 
 public interface ControllerInterface {
 	public void login(String id, String password) throws LoginException;
@@ -16,9 +17,15 @@ public interface ControllerInterface {
 	public void saveBook(Book book);
 	public void deleteBook(Book book);
 	
-	public void deleteMember(LibraryMember member);
-
+	public void saveNewMember(LibraryMember member);
 	public void checkout(Book book, LibraryMember member);
+	
+	public void saveNewUser(User user);
+	
+	public List<User> allUsers() ;
+
+
+	
 	
 
 	
