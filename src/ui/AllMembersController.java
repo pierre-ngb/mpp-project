@@ -16,7 +16,7 @@ public class AllMembersController {
 	
 	
 	@FXML
-	private TableView<LibraryMember> allMembers;
+	private TableView< LibraryMember > allMembers;
 	@FXML
 	private TableColumn<LibraryMember, String> firstName;
 	@FXML
