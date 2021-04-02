@@ -1,7 +1,5 @@
 package ui;
 
-
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +23,7 @@ import business.Author;
 import business.Book;
 import business.ControllerInterface;
 import business.LibraryMember;
+import business.LibrarySystemException;
 import business.SystemController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,14 +58,20 @@ public class CheckOutController {
     void checkoutBtnAction(ActionEvent event) {
 
     	ControllerInterface ci = new SystemController();
-    	ci.checkout(book, member);
-    	ci.allMembers().forEach(m -> {
-    		System.out.println(m);
-    		if(m.getRecord() != null) {
-    			System.out.println("Checkout records");
-    			m.getRecord().getRecords().forEach(System.out::println);
+    	try {
+    		if(isInputValid()) {
+			ci.checkout(book, member);
+			Utils.makeAlert("Checkout Done successfuly", "Checkout", AlertType.CONFIRMATION)
+			.show();
+			
+			clearField();
     		}
-    	});
+			
+		} catch (LibrarySystemException e) {
+			Utils.makeAlert(e.getMessage(), "Checkout", AlertType.ERROR).show();
+			clearField();
+		}
+    	
     }
     
     @FXML
@@ -148,6 +155,43 @@ public class CheckOutController {
     
     }
 
+    private void clearField() {
+    	bookNameFld.setText("");
+    	memberNameFld.setText("");
+    	checkoutDate.setText("");
+    	returnDate.setText("");
+    	book = null;
+    	member = null;
+    }
+    
+    private boolean isInputValid() {
+    	String errorMessage = "";
+
+        if (bookNameFld.getText() == null || bookNameFld.getText().length() == 0) {
+            errorMessage += "Please select a book!\n"; 
+        }
+        if (memberNameFld.getText() == null || memberNameFld.getText().length() == 0) {
+            errorMessage += "Please select a Member!\n"; 
+        }
+        if (checkoutDate.getText() == null || checkoutDate.getText().length() == 0) {
+            errorMessage += "No valid checkout date!\n"; 
+        }
+
+        if (returnDate.getText() == null || returnDate.getText().length() == 0) {
+            errorMessage += "No valid due date!\n"; 
+        } 
+       
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message.
+            Alert alert = Utils.makeAlert(errorMessage, "Invalid Fields", AlertType.ERROR);
+            alert.showAndWait();
+            
+            return false;
+        }
+    }
+   
 
     @FXML
     public void initialize() {
@@ -156,7 +200,7 @@ public class CheckOutController {
     	memberNameFld.setEditable(false);
     	checkoutDate.setEditable(false);
     	returnDate.setEditable(false);
-    	
+    	clearField();
     	Utils.numberOnly(durationFld);
 //    	Utils.numberOnly(checkoutDate);
     	    	

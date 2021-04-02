@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import utils.Utils;
 
 
@@ -45,7 +46,8 @@ public class LoginViewController {
 
 	if (validateMessage.length() > 0) {
 		
-		Utils.alertMessage("Data Missing",validateMessage);
+		   Utils.makeAlert(validateMessage,"Data Missing",AlertType.ERROR);
+
 		return;
 	}
 
@@ -65,7 +67,8 @@ public class LoginViewController {
  
 } catch(LoginException ex) {
 	validateMessage = ex.getMessage();
-	Utils.alertMessage("Error",validateMessage);
+	   Utils.makeAlert(validateMessage,"Validation",AlertType.ERROR);
+
 
 	System.out.println(ex.getMessage());
 	return;

@@ -7,6 +7,7 @@ import java.time.format.DateTimeParseException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
 public class Utils {
@@ -72,12 +73,12 @@ public class Utils {
     	return Utils.parse(dateString) != null;
     }
     
-    public static void alertMessage(String typeAler,String meesage) {
-	  	Alert alert = new Alert(Alert.AlertType.ERROR);
-	    alert.setTitle("Alert");
-	    alert.setHeaderText(typeAler);
-	    alert.setContentText(meesage);
-	    alert.showAndWait();
-
-}
+    public static Alert makeAlert(String message, String title, AlertType type) {
+    	Alert al = new Alert(type);
+    	al.setTitle("Alert");
+        al.setHeaderText(title);
+        al.setContentText(message);
+        
+    	return al;
+    }
 }

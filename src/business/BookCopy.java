@@ -40,6 +40,10 @@ final public class BookCopy implements Serializable {
 	}
 	
 	@Override
+	public String toString() {
+		return "Book: "+getBook().getTitle()+", Copy Num: "+copyNum;
+	}
+	@Override
 	public boolean equals(Object ob) {
 		if(ob == null) return false;
 		if(!(ob instanceof BookCopy)) return false;

@@ -78,12 +78,29 @@ public class SystemController implements ControllerInterface {
 	
 	
 	@Override
-	public void checkout(Book book, LibraryMember member) {
+	public void checkout(Book book, LibraryMember member) throws LibrarySystemException {
+		if(!book.isAvailable()) {
+			throw new 
+			LibrarySystemException("The book: "+book.getTitle()+" is not available");
+		}
 		BookCopy copy = book.getNextAvailableCopy();
 		int maxCopy = book.getMaxCheckoutLength();
 		member.checkout(copy, LocalDate.now(), LocalDate.now().plusDays(maxCopy));
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(member);
+		da.saveBook(book);
+	}
+	@Override
+	public Book getBookByIsbn(String isbn) {
+		DataAccess da = new DataAccessFacade();
+		Book retval = da.readBooksMap().get(isbn);
+		return retval;
+	}
+	@Override
+	public LibraryMember getMemberById(String id) {
+		DataAccess da = new DataAccessFacade();
+		LibraryMember retval = da.readMemberMap().get(id);
+		return retval;
 	}
 	@Override
 	public void saveNewMember(LibraryMember member) {
@@ -107,6 +124,11 @@ public class SystemController implements ControllerInterface {
 			List<User> retval = new ArrayList<>();
 			retval.addAll(da.readUserMap().values());
 			return retval;
+		
+	}
+	@Override
+	public void deleteMember(LibraryMember member) {
+		// TODO Auto-generated method stub
 		
 	}
 	

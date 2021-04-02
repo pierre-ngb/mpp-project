@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import utils.Utils;
@@ -85,7 +86,8 @@ public class AddNewMemberController {
 
     		if (validateMessage.length() > 0) {
     			
-    			Utils.alertMessage("Data Missing",validateMessage);
+    		
+    			Utils.makeAlert(validateMessage,"Data Missing",AlertType.ERROR);
     			return;
     		}
     		
