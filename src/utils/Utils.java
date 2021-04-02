@@ -6,6 +6,8 @@ import java.time.format.DateTimeParseException;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
 public class Utils {
@@ -69,5 +71,14 @@ public class Utils {
     public static boolean validDate(String dateString) {
     	// Try to parse the String.
     	return Utils.parse(dateString) != null;
+    }
+    
+    public static Alert makeAlert(String message, String title, AlertType type) {
+    	Alert al = new Alert(type);
+    	al.setTitle("Alert");
+        al.setHeaderText(title);
+        al.setContentText(message);
+        
+    	return al;
     }
 }
