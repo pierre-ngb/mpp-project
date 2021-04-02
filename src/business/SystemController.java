@@ -28,8 +28,6 @@ public class SystemController implements ControllerInterface {
 			throw new LoginException("Password incorrect");
 		}
 		currentAuth = map.get(id).getAuthorization();
-		System.out.println("what");
-		
 	}
 	@Override
 	public List<String> allMemberIds() {
