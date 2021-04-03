@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="338.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LibrarianViewController">
+<AnchorPane prefHeight="338.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LibrarianViewController">
 
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="121.0" layoutY="25.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
@@ -69,6 +69,7 @@
                       <Button fx:id="newBtn" mnemonicParsing="false" onAction="#newBtnAction" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="New" textFill="WHITE" />
                         <Button fx:id="editBtn" layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#editbtnAction" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Edit" textFill="WHITE" />
                         <Button fx:id="deletBtn" layoutX="135.0" layoutY="17.0" mnemonicParsing="false" onAction="#deletebtnAction" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Delete" textFill="WHITE" />
+                        <Button fx:id="copyBook" layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#addCopy" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Copy" textFill="WHITE" />
                     </buttons>
                   </ButtonBar>
                </children>
