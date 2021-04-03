@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import dataaccess.Auth;
 import dataaccess.DataAccess;
@@ -99,6 +100,7 @@ public class SystemController implements ControllerInterface {
 		BookCopy copy = book.getNextAvailableCopy();
 		int maxCopy = book.getMaxCheckoutLength();
 		member.checkout(copy, LocalDate.now(), LocalDate.now().plusDays(maxCopy));
+//		member.checkout(copy, LocalDate.now().minusDays(30), LocalDate.now().minusDays(30).plusDays(maxCopy));
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(member);
 		da.saveBook(book);
@@ -146,6 +148,26 @@ public class SystemController implements ControllerInterface {
 		book.addCopy();
 		DataAccess da = new DataAccessFacade();
 		da.saveBook(book);
+	}
+
+	@Override
+	public List<CheckoutRecordEntry> overdueBooks(String isbn) throws LibrarySystemException {
+		Book book = getBookByIsbn(isbn);
+		List<CheckoutRecordEntry> records = new ArrayList<CheckoutRecordEntry>();
+		if (book == null) {
+			throw new LibrarySystemException("The book is not in the system");
+		}
+		allMembers().forEach(m ->{
+			m.getRecord().getRecords()
+			.forEach(r -> {
+				if(r.getBook().getBook().equals(book)) {
+					records.add(r);
+				}
+			});
+		});
+		return records.stream()
+				.filter(t -> t.getDueDate().compareTo(LocalDate.now()) < 0)
+				.collect(Collectors.toList());
 	}
 
 }

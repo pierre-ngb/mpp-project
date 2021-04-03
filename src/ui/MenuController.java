@@ -6,7 +6,13 @@ import business.SystemController;
 import dataaccess.Auth;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class MenuController {
 
@@ -81,5 +87,32 @@ public class MenuController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	@FXML
+	void seeRecordsAction() {
+		
+
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Start.class.getResource("OverdueBooks.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Overdue Book copies");
+			stage.initModality(Modality.WINDOW_MODAL);
+
+			stage.initOwner(Start.getPrimaryStage());
+			Scene newScene = new Scene(page);
+			stage.setScene(newScene);
+			OverdueBooksController con = loader.getController();
+//			con.setIsbn(isbn);
+			con.setDialogStage(stage);
+			
+			stage.showAndWait();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

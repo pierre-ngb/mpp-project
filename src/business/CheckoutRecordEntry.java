@@ -12,13 +12,16 @@ public class CheckoutRecordEntry implements Serializable{
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
 	private BookCopy book;
+	private CheckoutRecord record;
 	
 	
 	
-	CheckoutRecordEntry(LocalDate checkoutDate, LocalDate dueDate, BookCopy book) {
+	CheckoutRecordEntry(LocalDate checkoutDate, LocalDate dueDate, BookCopy book,
+			CheckoutRecord record) {
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
 		this.book = book;
+		this.record = record;
 	}
 
 
@@ -41,6 +44,11 @@ public class CheckoutRecordEntry implements Serializable{
 	public String toString() {
 		return "CheckoutRecordEntry [checkoutDate=" + checkoutDate + ", dueDate=" + dueDate + ", book=" + 
 				book.toString()+ "]";
+	}
+
+
+	public CheckoutRecord getRecord() {
+		return record;
 	}
 	
 	

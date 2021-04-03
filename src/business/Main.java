@@ -5,14 +5,41 @@ import java.util.stream.Collectors;
 
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
+import utils.Utils;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
+		ControllerInterface ci = new SystemController();
+		
+//		try {
+//			ci.checkout("48-56882", "1003");
+//			System.out.println("Sucess");
+//		} catch (LibrarySystemException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		try {
+			ci.overdueBooks("48-56882").forEach(t -> {
+				System.out.println(t.getBook().getBook().getIsbn()+ " " +t.getBook().getBook().getTitle()+
+			" "+t.getBook().getCopyNum()+" "+t.getRecord().getMember().getMemberId()
+						+" "+Utils.format(t.getDueDate())
+				);
+			});
+		} catch (LibrarySystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 //		System.out.println(allWhoseZipContains3());
 //		System.out.println(allHavingAtLeastTwoCopies());
 //		System.out.println(allHavingMultipleAuthors());
-		ControllerInterface ci = new SystemController();
+//		ControllerInterface ci = new SystemController();
 //		try {
 //			Book book = ci.getBookByIsbn("99-22223");
 //			LibraryMember member = ci.getMemberById("1002");

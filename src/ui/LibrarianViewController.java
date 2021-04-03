@@ -241,11 +241,11 @@ public class LibrarianViewController {
 		} else {
 			isbn = book.getIsbn();
 		}
-		
+
 		ControllerInterface ci = new SystemController();
 		try {
 			ci.addBookCopy(isbn);
-			
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.initOwner(Start.getPrimaryStage());
 			alert.setTitle("Success");
@@ -254,13 +254,19 @@ public class LibrarianViewController {
 			initViewBook();
 
 		} catch (LibrarySystemException e) {
-			
+
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(Start.getPrimaryStage());
 			alert.setTitle("Error");
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
+	}
+
+	@FXML
+	public void showRecords() {
+		
+
 	}
 
 	public void addNewbook() {

@@ -38,5 +38,7 @@ public interface ControllerInterface {
 	public List<User> allUsers();
 
 	public void saveUser(User user);
+	
+	public List<CheckoutRecordEntry> overdueBooks(String isbn) throws LibrarySystemException;;
 
 }
