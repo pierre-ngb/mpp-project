@@ -19,7 +19,7 @@ public interface ControllerInterface {
 	public Book getBookByIsbn(String isbn);
 	public void deleteMember(LibraryMember member);
 
-	public void checkout(Book book, LibraryMember member) throws LibrarySystemException;
+	public void checkout(String isbn, String memberId) throws LibrarySystemException;
 	public LibraryMember getMemberById(String id);
 	
 	public void saveNewMember(LibraryMember member) ;

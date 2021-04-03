@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
+<AnchorPane prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutController">
    <children>
       <AnchorPane prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #73C3FB;">
          <children>
@@ -39,11 +39,8 @@
          <children>
             <Label text="Select Book" />
             <Label text="Select Member" GridPane.rowIndex="1" />
-            <Label text="Duration" GridPane.rowIndex="2" />
-            <Label text="Chechout Date" GridPane.rowIndex="3" />
-            <Label text="Due Date" GridPane.rowIndex="4" />
-
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="ISBN" GridPane.rowIndex="3" />
+            <Label text="Member ID" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <TextField fx:id="bookNameFld" layoutX="1.0" layoutY="2.0" prefHeight="25.0" prefWidth="215.0" />
@@ -56,10 +53,8 @@
                   <Button layoutX="232.0" layoutY="1.0" mnemonicParsing="false" onAction="#findMemberAction" prefHeight="25.0" prefWidth="21.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="+" textFill="WHITE" />
                </children>
             </AnchorPane>
-
-            <TextField fx:id="durationFld" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="checkoutDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="returnDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="isbn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="memberId" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             
          </children>
       </GridPane>
