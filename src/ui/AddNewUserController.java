@@ -96,12 +96,7 @@ public class AddNewUserController {
 
     	 idFld.setText(""+ a);
     	  
-//       List<String> ar = new ArrayList<>();
-//       ar =  Arrays.asList("LIBRARIAN", "ADMIN", "BOTH");
-//       
-//       comboBox.getItems().addAll("LIBRARIAN", "ADMIN", "BOTH");
-//       
-//	   comboBox.getSelectionModel().getSelectedItem();
+
 	   
 	   ObservableList<String> data = FXCollections.observableArrayList("LIBRARIAN", "ADMIN", "BOTH");
 	   comboBox.setItems(data);
