@@ -26,6 +26,8 @@ public class MenuController {
 	private Button books;
 	@FXML
 	private Button checkout;
+	@FXML
+	private Button checkoutrec;
 
 	@FXML
 	public void initialize() {
@@ -34,10 +36,12 @@ public class MenuController {
 			member.setVisible(false);
 			books.setVisible(false);
 			users.setVisible(false);
+			checkoutrec.setVisible(false);
 			break;
 		case ADMIN:
 			users.setVisible(false);
 			checkout.setVisible(false);
+			checkoutrec.setVisible(false);
 			break;
 		default:
 			break;
@@ -88,10 +92,9 @@ public class MenuController {
 		}
 
 	}
-	
+
 	@FXML
 	void seeRecordsAction() {
-		
 
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -107,7 +110,7 @@ public class MenuController {
 			OverdueBooksController con = loader.getController();
 //			con.setIsbn(isbn);
 			con.setDialogStage(stage);
-			
+
 			stage.showAndWait();
 
 		} catch (IOException e) {
