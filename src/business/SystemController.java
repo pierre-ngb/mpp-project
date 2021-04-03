@@ -85,7 +85,18 @@ public class SystemController implements ControllerInterface {
 	
 	
 	@Override
-	public void checkout(Book book, LibraryMember member) throws LibrarySystemException {
+	public void checkout(String isbn, String memberId) throws LibrarySystemException {
+		Book book = getBookByIsbn(isbn);
+		LibraryMember member = getMemberById(memberId);
+		if(book == null) {
+			throw new 
+			LibrarySystemException("The book is not in the system");
+		} 
+		
+		if (member == null) {
+			throw new 
+			LibrarySystemException("This member is not the system please register");
+		}
 		if(!book.isAvailable()) {
 			throw new 
 			LibrarySystemException("The book: "+book.getTitle()+" is not available");

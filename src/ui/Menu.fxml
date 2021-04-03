@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #83C3FB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #83C3FB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
    <children>
       <AnchorPane layoutX="123.0" prefHeight="300.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -16,38 +16,38 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="112.0" layoutY="95.0" mnemonicParsing="false" onAction="#manageBookAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Books" textFill="WHITE">
+            <Button fx:id="books" layoutX="112.0" layoutY="95.0" mnemonicParsing="false" onAction="#manageBookAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Books" textFill="WHITE">
                <effect>
                   <InnerShadow>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </InnerShadow>
                </effect>
             </Button>
-            <Button layoutX="112.0" layoutY="142.0" mnemonicParsing="false" onAction="#manageMemberAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Members" textFill="WHITE">
+            <Button fx:id="member" layoutX="112.0" layoutY="142.0" mnemonicParsing="false" onAction="#manageMemberAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Members" textFill="WHITE">
                <effect>
                   <InnerShadow>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </InnerShadow>
                </effect>
             </Button>
-            <Button layoutX="112.0" layoutY="190.0" mnemonicParsing="false" onAction="#manageUserAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Users" textFill="WHITE">
+            <Button fx:id="users" layoutX="112.0" layoutY="190.0" mnemonicParsing="false" onAction="#manageUserAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Manage Users" textFill="WHITE">
                <effect>
                   <InnerShadow>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </InnerShadow>
                </effect>
             </Button>
-            <Button layoutX="114.0" layoutY="241.0" mnemonicParsing="false" onAction="#checkoutBookAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE">
+            <Button fx:id="checkout" layoutX="114.0" layoutY="241.0" mnemonicParsing="false" onAction="#checkoutBookAction" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: #000080; -fx-background-radius: 20; -fx-font-weight: 700;" text="Checkout" textFill="WHITE">
                <effect>
                   <InnerShadow>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color blue="1.0" green="1.0" red="1.0" />
                      </color>
                   </InnerShadow>
                </effect>

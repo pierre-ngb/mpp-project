@@ -6,26 +6,44 @@ import business.SystemController;
 import dataaccess.Auth;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert.AlertType;
-import utils.Utils;
+import javafx.scene.control.Button;
 
 public class MenuController {
 
 	Auth authorization = SystemController.currentAuth;
 
 	@FXML
+	private Button member;
+	@FXML
+	private Button users;
+	@FXML
+	private Button books;
+	@FXML
+	private Button checkout;
+
+	@FXML
+	public void initialize() {
+		switch (authorization) {
+		case LIBRARIAN:
+			member.setVisible(false);
+			books.setVisible(false);
+			users.setVisible(false);
+			break;
+		case ADMIN:
+			users.setVisible(false);
+			checkout.setVisible(false);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@FXML
 	void checkoutBookAction(ActionEvent event) {
-		if (authorization == Auth.BOTH || authorization == Auth.LIBRARIAN) {
-
-			try {
-				Start.setRoot("CheckOut");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-		} else {
-			Utils.makeAlert("You don't have privileges to access to this module", "Error", AlertType.ERROR).show();
-			return;
+		try {
+			Start.setRoot("CheckoutRecord");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -33,54 +51,34 @@ public class MenuController {
 	@FXML
 	void manageBookAction(ActionEvent event) {
 
-		if (authorization == Auth.BOTH || authorization == Auth.ADMIN) {
-
-			try {
-				Start.setRoot("LibrarianView");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			Utils.makeAlert("You don't have privileges to access to this module", "Error", AlertType.ERROR).show();
-			return;
+		try {
+			Start.setRoot("LibrarianView");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void manageMemberAction(ActionEvent event) {
 
-		if (authorization == Auth.BOTH || authorization == Auth.ADMIN) {
-
-			try {
-				Start.setRoot("ManageMembers");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		} else {
-			Utils.makeAlert("You don't have privileges to access to this module", "Error", AlertType.ERROR).show();
-			return;
+		try {
+			Start.setRoot("ManageMembers");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	@FXML
 	void manageUserAction(ActionEvent event) {
 
-		if (authorization == Auth.BOTH) {
-
-			try {
-				Start.setRoot("ManageUsers");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		} else {
-			Utils.makeAlert("You don't have privileges to access to this module", "Error", AlertType.ERROR).show();
-			return;
+		try {
+			Start.setRoot("ManageUsers");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

@@ -29,183 +29,214 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
-
-
 public class CheckOutController {
 
-     @FXML
-    private TextField durationFld;
+	@FXML
+	private TextField isbn;
 
-    @FXML
-    private TextField checkoutDate;
+	@FXML
+	private TextField memberId;
 
-    @FXML
-    private TextField returnDate;
-    
-    @FXML
-    private Button findBook;
-    
-    @FXML
-    private TextField bookNameFld;
+	@FXML
+	private Button findBook;
 
-    @FXML
-    private TextField memberNameFld;
-    
-    private Book book;
-    private LibraryMember member;
+	@FXML
+	private TextField bookNameFld;
 
-    @FXML
-    void checkoutBtnAction(ActionEvent event) {
+	@FXML
+	private TextField memberNameFld;
 
-    	ControllerInterface ci = new SystemController();
-    	try {
-    		if(isInputValid()) {
-			ci.checkout(book, member);
-			Utils.makeAlert("Checkout Done successfuly", "Checkout", AlertType.CONFIRMATION)
-			.show();
-			
-			clearField();
-    		}
-			
+	private Book book;
+	private LibraryMember member;
+
+	private Stage dialogStage;
+	private boolean okClicked = false;
+
+	/**
+	 * Sets the stage of this dialog.
+	 * 
+	 * @param dialogStage
+	 */
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
+
+	@FXML
+	void checkoutBtnAction(ActionEvent event) {
+
+		ControllerInterface ci = new SystemController();
+		try {
+			if (isInputValid() > 0) {
+				String isbnBook;
+				String idMember;
+				if(isInputValid() == 1) {
+					isbnBook = book.getIsbn();
+					idMember = member.getMemberId();
+				}
+				else {
+					isbnBook = isbn.getText().trim();
+					idMember = memberId.getText().trim();
+				}
+				ci.checkout(isbnBook, idMember);
+				okClicked = true;
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.initOwner(dialogStage);
+				alert.setTitle("Success");
+				alert.setContentText("Checkout Done successfuly");
+
+				alert.showAndWait();
+				
+				dialogStage.close();
+			}
+
 		} catch (LibrarySystemException e) {
 			Utils.makeAlert(e.getMessage(), "Checkout", AlertType.ERROR).show();
 			clearField();
 		}
-    	
-    }
-    
-    @FXML
-    void findBookAction(ActionEvent event) {
-    	
-    	try {
-        	  FXMLLoader loader = new FXMLLoader();
-        	  loader.setLocation(Start.class.getResource("AllBooks" + ".fxml"));
-    		AnchorPane page = (AnchorPane)loader.load();
-    		Stage stage = new Stage();
-    		stage.setTitle("Select Book");
-    		stage.initModality(Modality.WINDOW_MODAL);
-    		
-    		stage.initOwner(Start.getPrimaryStage());
-    		Scene newScene = new Scene(page);
-    		stage.setScene(newScene);
-    		
-    		AllBooksController con = loader.getController();
-    		  con.setDialogStage(stage);
-    		
-    		stage.showAndWait();
-    		if(con.returnBook != null) {
-    			book = con.returnBook;
-    			bookNameFld.setText(con.returnBook.getTitle());
-    		    LocalDate dt = Utils.parse(LocalDate.now().format(
-    					DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-    		    String st = Utils.format(dt);
-    		    checkoutDate.setText(st);
-    		    LocalDate lt = LocalDate.now().plusDays(con.returnBook.getMaxCheckoutLength());
-    			returnDate.setText(Utils.format(lt));
-    		}  		
-    		
-    	} catch (IOException e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	}
-    
-    }
-    
 
-    @FXML
-    void backBtnAction(ActionEvent event) {
-    	
-    	try {
+	}
+
+	@FXML
+	void findBookAction(ActionEvent event) {
+
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Start.class.getResource("AllBooks" + ".fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Select Book");
+			stage.initModality(Modality.WINDOW_MODAL);
+
+			stage.initOwner(Start.getPrimaryStage());
+			Scene newScene = new Scene(page);
+			stage.setScene(newScene);
+
+			AllBooksController con = loader.getController();
+			con.setDialogStage(stage);
+
+			stage.showAndWait();
+			if (con.returnBook != null) {
+				book = con.returnBook;
+				bookNameFld.setText(con.returnBook.getTitle());
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	void backBtnAction(ActionEvent event) {
+
+		try {
 			Start.setRoot("Menu");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-    }
-    
-    @FXML
-    void findMemberAction(ActionEvent event) { 	
-    	
-    	try {
-        	  FXMLLoader loader = new FXMLLoader();
-        	  loader.setLocation(Start.class.getResource("AllMembers" + ".fxml"));
-    		AnchorPane page = (AnchorPane)loader.load();
-    		Stage stage = new Stage();
-    		stage.setTitle("Select Member");
-    		stage.initModality(Modality.WINDOW_MODAL);
-    		
-    		stage.initOwner(Start.getPrimaryStage());
-    		Scene newScene = new Scene(page);
-    		stage.setScene(newScene);
-    		
-    		AllMembersController m = loader.getController();
-    		m.setDialogStage(stage);
-    		
-    		stage.showAndWait();
-    		if(m.getLibraryMember() != null) {
-    			memberNameFld.setText(m.getLibraryMember().getFirstName() + " " + m.getLibraryMember().getLastName());
-    			member = m.getLibraryMember();
-    		}
-    		
-    	} catch (IOException e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	}
-    
-    }
+	}
 
-    private void clearField() {
-    	bookNameFld.setText("");
-    	memberNameFld.setText("");
-    	checkoutDate.setText("");
-    	returnDate.setText("");
-    	book = null;
-    	member = null;
-    }
-    
-    private boolean isInputValid() {
-    	String errorMessage = "";
+	@FXML
+	void findMemberAction(ActionEvent event) {
 
-        if (bookNameFld.getText() == null || bookNameFld.getText().length() == 0) {
-            errorMessage += "Please select a book!\n"; 
-        }
-        if (memberNameFld.getText() == null || memberNameFld.getText().length() == 0) {
-            errorMessage += "Please select a Member!\n"; 
-        }
-        if (checkoutDate.getText() == null || checkoutDate.getText().length() == 0) {
-            errorMessage += "No valid checkout date!\n"; 
-        }
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Start.class.getResource("AllMembers" + ".fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Select Member");
+			stage.initModality(Modality.WINDOW_MODAL);
 
-        if (returnDate.getText() == null || returnDate.getText().length() == 0) {
-            errorMessage += "No valid due date!\n"; 
-        } 
-       
-        if (errorMessage.length() == 0) {
-            return true;
-        } else {
-            // Show the error message.
-            Alert alert = Utils.makeAlert(errorMessage, "Invalid Fields", AlertType.ERROR);
-            alert.showAndWait();
-            
-            return false;
-        }
-    }
-   
+			stage.initOwner(Start.getPrimaryStage());
+			Scene newScene = new Scene(page);
+			stage.setScene(newScene);
 
-    @FXML
-    public void initialize() {
-    	
-    	bookNameFld.setEditable(false);
-    	memberNameFld.setEditable(false);
-    	checkoutDate.setEditable(false);
-    	returnDate.setEditable(false);
-    	clearField();
-    	Utils.numberOnly(durationFld);
+			AllMembersController m = loader.getController();
+			m.setDialogStage(stage);
+
+			stage.showAndWait();
+			if (m.getLibraryMember() != null) {
+				memberNameFld.setText(m.getLibraryMember().getFirstName() + " " + m.getLibraryMember().getLastName());
+				member = m.getLibraryMember();
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	private void clearField() {
+		bookNameFld.setText("");
+		memberNameFld.setText("");
+		isbn.setText("");
+		memberId.setText("");
+		book = null;
+		member = null;
+	}
+
+	private int isInputValid() {
+		String errorMessage = "";
+		String errorMessage2 = "";
+
+		if (bookNameFld.getText() == null || bookNameFld.getText().length() == 0) {
+			errorMessage2 += "Please select a book!\n";
+		}
+		if (memberNameFld.getText() == null || memberNameFld.getText().length() == 0) {
+			errorMessage2 += "Please select a Member!\n";
+		}
+		if (isbn.getText() == null || isbn.getText().length() == 0) {
+			errorMessage += "No ISBN!\n";
+		}
+
+		if (memberId.getText() == null || memberId.getText().length() == 0) {
+			errorMessage += "No member ID inserted!\n";
+		}
+		int val = 0;
+		if (errorMessage.length() == 0 && errorMessage2.length() > 0) {
+			val = 2;
+			return 2;
+		} else if (errorMessage.length() > 0 && errorMessage2.length() == 0) {
+			val = 1;
+			return 1;
+		} else {
+			// Show the error message.
+			String finalMsg = "";
+			if(val == 1) {
+				finalMsg = errorMessage;
+			}
+			else if(val == 2) {
+				finalMsg = errorMessage2;
+			}
+			else {
+				finalMsg = "You should use one checkout method and complete Fields!\n";
+			}
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(dialogStage);
+			alert.setTitle("Invalid Fields");
+			alert.setContentText(finalMsg+errorMessage+errorMessage2);
+
+			alert.showAndWait();
+			return 0;
+		}
+	}
+
+	@FXML
+	public void initialize() {
+
+		bookNameFld.setEditable(false);
+		memberNameFld.setEditable(false);
+		clearField();
 //    	Utils.numberOnly(checkoutDate);
-    	    	
-    }
-     
-   
+
+	}
+
+	public boolean isOkClicked() {
+		return okClicked;
+	}
 
 }

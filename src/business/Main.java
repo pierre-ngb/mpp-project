@@ -13,23 +13,23 @@ public class Main {
 //		System.out.println(allHavingAtLeastTwoCopies());
 //		System.out.println(allHavingMultipleAuthors());
 		ControllerInterface ci = new SystemController();
-		try {
-			Book book = ci.getBookByIsbn("99-22223");
-			LibraryMember member = ci.getMemberById("1002");
-			
-			ci.checkout(book, member);
-			ci.allMembers().stream()
-			.filter(x -> x.getRecord().getRecords().size()>0)
-			.collect(Collectors.toList())
-			.forEach(m -> {
-	    		System.out.println(m);
-	    			System.out.println("Checkout records");
-	    			m.getRecord().getRecords().forEach(System.out::println);
-	    		
-	    	});
-		} catch (LibrarySystemException e) {
-			System.out.println(e.getMessage());
-		}
+//		try {
+//			Book book = ci.getBookByIsbn("99-22223");
+//			LibraryMember member = ci.getMemberById("1002");
+//			
+//			ci.checkout(book, member);
+//			ci.allMembers().stream()
+//			.filter(x -> x.getRecord().getRecords().size()>0)
+//			.collect(Collectors.toList())
+//			.forEach(m -> {
+//	    		System.out.println(m);
+//	    			System.out.println("Checkout records");
+//	    			m.getRecord().getRecords().forEach(System.out::println);
+//	    		
+//	    	});
+//		} catch (LibrarySystemException e) {
+//			System.out.println(e.getMessage());
+//		}
 		
 		
 		
