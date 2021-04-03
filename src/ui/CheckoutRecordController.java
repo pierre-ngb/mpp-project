@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import business.CheckoutRecord;
@@ -63,7 +64,24 @@ public class CheckoutRecordController {
 	    	initView();
 		}
 	}
+	@FXML
 
+	void backBtnAction() {
+
+	try {
+
+	Start.setRoot("Menu");
+
+	} catch (IOException e) {
+
+	 // TODO Auto-generated catch block
+
+	e.printStackTrace();
+
+	}
+
+
+	}
 	private boolean createCheckout() {
 		
 		try {

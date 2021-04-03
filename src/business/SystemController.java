@@ -100,7 +100,7 @@ public class SystemController implements ControllerInterface {
 		BookCopy copy = book.getNextAvailableCopy();
 		int maxCopy = book.getMaxCheckoutLength();
 		member.checkout(copy, LocalDate.now(), LocalDate.now().plusDays(maxCopy));
-//		member.checkout(copy, LocalDate.now().minusDays(30), LocalDate.now().minusDays(30).plusDays(maxCopy));
+//		member.checkout(copy, LocalDate.now().minusDays(15), LocalDate.now().minusDays(15).plusDays(maxCopy));
 		DataAccess da = new DataAccessFacade();
 		da.saveNewMember(member);
 		da.saveBook(book);
