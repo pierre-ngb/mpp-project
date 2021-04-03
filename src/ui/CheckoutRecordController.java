@@ -38,6 +38,7 @@ public class CheckoutRecordController {
 	}
 
 	private void initView() {
+		
 		records.getItems().clear();
 		book.setCellValueFactory(
 				cellData -> new SimpleStringProperty(cellData.getValue().getBook().getBook().getTitle()));
@@ -52,6 +53,7 @@ public class CheckoutRecordController {
 		ci.allMembers().forEach(t -> {
 			records.getItems().addAll(t.getRecord().getRecords());
 		});
+		records.setSelectionModel(null);
 	}
 	
 	@FXML
@@ -63,6 +65,7 @@ public class CheckoutRecordController {
 	}
 
 	private boolean createCheckout() {
+		
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Start.class.getResource("CheckOut.fxml"));
