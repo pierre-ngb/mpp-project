@@ -66,7 +66,7 @@ public class Start extends Application {
 
      primaryStage.setTitle("Library Management System");
      parent = loadFXML("login");
-        scene = new Scene(parent, 640, 480);
+        scene = new Scene(parent, 600, 400);
 
         primaryStage.setScene(scene);
 
