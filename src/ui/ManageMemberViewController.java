@@ -92,9 +92,9 @@ public class ManageMemberViewController {
 		ControllerInterface ci = new SystemController();
 		LibraryMember member = ci.getMemberById(memberId);
 		if (member != null) {
-			System.out.println("Book ================= Copy N.= Checkout Date == Due Date");
+			System.out.println("ISBN ======== Book ================= Copy N.= Checkout Date == Due Date");
 			member.getRecord().getRecords().forEach(m -> {
-				System.out.println(m.getBook().getBook().getTitle() + " " + m.getBook().getCopyNum() + " "
+				System.out.println(m.getBook().getBook().getIsbn() +" "+m.getBook().getBook().getTitle() + " " + m.getBook().getCopyNum() + " "
 						+ m.getCheckoutDate() + " " + m.getDueDate());
 			});
 		}

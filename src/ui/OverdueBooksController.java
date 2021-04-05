@@ -1,5 +1,7 @@
 package ui;
 
+import java.time.Period;
+
 import business.Book;
 import business.CheckoutRecordEntry;
 import business.ControllerInterface;
@@ -33,17 +35,18 @@ public class OverdueBooksController {
 
 	@FXML
 	private TableColumn<CheckoutRecordEntry, String> dueCol;
-	
-//	private String isbn;
-	
-	 	private Stage dialogStage;
-	    
-	  	 
-	    public void setDialogStage(Stage dialogStage) {
-	        this.dialogStage = dialogStage;
-	    }
 
-	
+	@FXML
+	private TableColumn<CheckoutRecordEntry, String> amountCol;
+
+//	private String isbn;
+
+	private Stage dialogStage;
+
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
+
 	@FXML
 	public void initialize() {
 		String isbn = "";
@@ -56,19 +59,23 @@ public class OverdueBooksController {
 		td.showAndWait();
 		isbn = td.getEditor().getText().trim();
 		entries.setSelectionModel(null);
-		isbnCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-				cellData.getValue().getBook().getBook().getIsbn()) );
-		bookCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-				cellData.getValue().getBook().getBook().getTitle()) );
-		ncopyCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-				""+cellData.getValue().getBook().getCopyNum()) );
-		midCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-				""+cellData.getValue().getRecord().getMember().getMemberId()) );
-		dueCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-				""+Utils.format(cellData.getValue().getDueDate())) );
-		
+		isbnCol.setCellValueFactory(
+				cellData -> new SimpleStringProperty(cellData.getValue().getBook().getBook().getIsbn()));
+		bookCol.setCellValueFactory(
+				cellData -> new SimpleStringProperty(cellData.getValue().getBook().getBook().getTitle()));
+		ncopyCol.setCellValueFactory(
+				cellData -> new SimpleStringProperty("" + cellData.getValue().getBook().getCopyNum()));
+		midCol.setCellValueFactory(
+				cellData -> new SimpleStringProperty("" + cellData.getValue().getRecord().getMember().getMemberId()));
+		dueCol.setCellValueFactory(
+				cellData -> new SimpleStringProperty("" + Utils.format(cellData.getValue().getDueDate())));
+		amountCol.setCellValueFactory(cellData -> {
+			Period diff = Period.between(cellData.getValue().getCheckoutDate(), cellData.getValue().getDueDate());
+			return new SimpleStringProperty(""+diff.getDays());
+		});
+
 		ControllerInterface ci = new SystemController();
-		try {	
+		try {
 //			entries.getItems().addAll(ci.overdueBooks(isbn));
 			ci.overdueBooks(isbn).forEach(t -> {
 				entries.getItems().add(t);
@@ -78,6 +85,5 @@ public class OverdueBooksController {
 			System.out.println(e.getMessage());
 		}
 	}
-
 
 }
