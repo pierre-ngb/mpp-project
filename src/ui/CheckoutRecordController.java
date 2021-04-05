@@ -1,9 +1,7 @@
 package ui;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-import business.CheckoutRecord;
 import business.CheckoutRecordEntry;
 import business.SystemController;
 import javafx.beans.property.SimpleStringProperty;

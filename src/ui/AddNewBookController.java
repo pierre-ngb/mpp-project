@@ -10,17 +10,13 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import utils.Utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import business.Author;
 import business.Book;
-import business.ControllerInterface;
-import business.LoginException;
 import business.SystemController;
-import dataaccess.Auth;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

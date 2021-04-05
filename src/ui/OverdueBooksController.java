@@ -2,7 +2,6 @@ package ui;
 
 import java.time.Period;
 
-import business.Book;
 import business.CheckoutRecordEntry;
 import business.ControllerInterface;
 import business.LibrarySystemException;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import utils.Utils;
 
@@ -42,6 +40,8 @@ public class OverdueBooksController {
 //	private String isbn;
 
 	private Stage dialogStage;
+	
+	
 
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
@@ -84,6 +84,10 @@ public class OverdueBooksController {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public Stage getDialogStage() {
+		return dialogStage;
 	}
 
 }

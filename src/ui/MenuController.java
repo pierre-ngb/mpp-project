@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -81,6 +80,19 @@ public class MenuController {
 
 	}
 
+	@FXML
+    void backBtnAction(ActionEvent event) {
+
+ 
+
+        try {
+            Start.setRoot("login");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
 	@FXML
 	void manageUserAction(ActionEvent event) {
 

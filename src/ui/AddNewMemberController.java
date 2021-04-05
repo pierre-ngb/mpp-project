@@ -3,36 +3,24 @@
 package ui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 import utils.Utils;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import business.Address;
 import business.Author;
-import business.Book;
-import business.ControllerInterface;
 import business.LibraryMember;
-import business.LoginException;
 import business.SystemController;
-import dataaccess.Auth;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 
 public class AddNewMemberController {
 
-	private List<Author> authors;
     @FXML
     private TextField userIdFld;
 
@@ -154,22 +142,22 @@ public class AddNewMemberController {
 //    	});
     }
     
-    private void convertComboDisplay() {
-    	comboBox.setConverter(new StringConverter<Author>() {
-    		
-    		@Override
-    		public String toString(Author author) {
-    			return author.getFirstName() + " "+ author.getLastName();
-    		}
-    		
-    		@Override
-    		public Author fromString(final String string) {
-    			return comboBox.getItems().stream().filter(
-    					auth -> auth.getLastName().equals(string))
-    					.findFirst().orElse(null);
-    		}
-    	});
-    }
+//    private void convertComboDisplay() {
+//    	comboBox.setConverter(new StringConverter<Author>() {
+//    		
+//    		@Override
+//    		public String toString(Author author) {
+//    			return author.getFirstName() + " "+ author.getLastName();
+//    		}
+//    		
+//    		@Override
+//    		public Author fromString(final String string) {
+//    			return comboBox.getItems().stream().filter(
+//    					auth -> auth.getLastName().equals(string))
+//    					.findFirst().orElse(null);
+//    		}
+//    	});
+//    }
     
 
     String validateMessage = "" ;

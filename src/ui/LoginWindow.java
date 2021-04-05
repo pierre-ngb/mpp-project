@@ -18,7 +18,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import ui.Start;
 
 public class LoginWindow extends Stage implements LibWindow {
 	public static final LoginWindow INSTANCE = new LoginWindow();

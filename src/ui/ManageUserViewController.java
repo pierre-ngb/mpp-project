@@ -1,8 +1,6 @@
 package ui;
 import java.io.IOException;
-import java.util.Iterator;
 
-import business.Book;
 import business.ControllerInterface;
 import business.LibraryMember;
 import business.SystemController;
@@ -15,12 +13,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 

@@ -1,7 +1,5 @@
 package ui;
 
-import java.io.IOException;
-
 import business.Book;
 import business.SystemController;
 import javafx.beans.property.SimpleStringProperty;

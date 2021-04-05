@@ -4,29 +4,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 import utils.Utils;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import business.Author;
 import business.Book;
 import business.ControllerInterface;
 import business.LibraryMember;
 import business.LibrarySystemException;
 import business.SystemController;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 public class CheckOutController {
@@ -115,9 +106,9 @@ public class CheckOutController {
 			con.setDialogStage(stage);
 
 			stage.showAndWait();
-			if (con.returnBook != null) {
-				book = con.returnBook;
-				bookNameFld.setText(con.returnBook.getTitle());
+			if (AllBooksController.returnBook != null) {
+				book = AllBooksController.returnBook;
+				bookNameFld.setText(AllBooksController.returnBook.getTitle());
 			}
 
 		} catch (IOException e) {

@@ -1,31 +1,15 @@
  
 
 package ui;
-
  
 
-
- 
-
-import java.io.Serializable;
 import java.net.URL;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-
 import javafx.scene.control.ComboBox;
-
 import javafx.scene.control.TextField;
-
-import javafx.scene.layout.HBox;
-
 import javafx.scene.control.Alert.AlertType;
-
 import javafx.stage.Stage;
-
-import javafx.util.StringConverter;
-
 import utils.Utils;
 
 
@@ -34,8 +18,6 @@ import utils.Utils;
 
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-
 import business.SystemController;
 import dataaccess.Auth;
 import dataaccess.User;
